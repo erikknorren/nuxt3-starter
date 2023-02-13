@@ -186,7 +186,7 @@ Do note the setup property in the script tag, this is used to write our Vue3 cod
 
 You can read more about the composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
 
-###pages/index.vue
+### pages/index.vue
 
 ```html
 <template>
@@ -204,7 +204,7 @@ This is the index.vue page, which is rendered at the base route of your app (loc
 
 You can read more about pages [here](https://v3.nuxtjs.org/docs/directory-structure/pages).
 
-###nuxt.config.ts
+### nuxt.config.ts
 
 ```jsx
 export default defineNuxtConfig({
@@ -240,7 +240,7 @@ This is the most important config file in your project. Your config is written i
 
 `yarn add @pinia/nuxt`
 
-###store/store.ts
+### store/store.ts
 
 ```tsx
 export const useNuxtStore = defineStore("nuxt-store", () => {
@@ -347,7 +347,7 @@ export function server() {
 
 `yarn add vuetify@next @mdi/font sass`
 
-###plugins/vuetify.js
+### plugins/vuetify.ts
 
 ```jsx
 import { createVuetify } from "vuetify";
@@ -364,7 +364,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 });
 ```
 
-###/assets/css/main.scss
+### /assets/css/main.scss
 
 ```scss
 html,
@@ -380,7 +380,7 @@ body {
 }
 ```
 
-##app.vue (change)
+### app.vue (change)
 
 ```html
 <template>
