@@ -1,5 +1,24 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr: false,
-    
-})
+  ssr: true,
+  vite: {
+    define: {
+      "process.env.DEBUG": false,
+    },
+  },
+  runtimeConfig: {
+    public: {
+      env: process.env.ENVIRONMENT,
+    },
+  },
+  modules: [
+    [
+      "@pinia/nuxt",
+      {
+        autoImports: ["defineStore", "acceptHMRUpdate"],
+      },
+    ],
+  ],
+  imports: {
+    dirs: ["store"],
+  },
+});

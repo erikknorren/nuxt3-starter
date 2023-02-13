@@ -1,55 +1,31 @@
-# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
 # Erik Nuxt 3 Starter
 
 ---
 
 Nuxt 3 Starter Guide explaining how this repository is generated and why aspects are used.
 
-- [/Nuxt3](/readme.md#L123)
-- [/Vite](/readme.md#L123)
-- [/Pinia](/readme.md#L123)
+---
+
+Base included in this starter:
+
+- [Nuxt3 - App](/readme.md#26)
+- [Vite - Build Tool](/readme.md#209)
+- [Pinia - State Management](/readme.md#L217)
+- [Nitro - Backend](/readme.md#L222)
+
+---
+
+Frontend Additions:
+
+- [Vuetify - Design Framework with SCSS](/readme.md#L246)
+- [Tailwind - CSS Utility Classes](/readme.md#L367)
+
+---
+
+Backend Additions:
+
+- [Prisma - ORM](/readme.md#L390)
+- [Nuxt-Security - Security](/readme.md#L399)
 
 ---
 
@@ -59,10 +35,12 @@ Open Your editor in the folder you want in a new window
 
 Helpful Visual Studio Code extensions:
 
+- Prettier - Code formatter
+- ESLint
 - Vue Language Features (Volar)
 - Typescript Vue Plugin (Volar)
-- vuetify-vscode if using vuetify
-- Tailwind CSS Intellisense if using tailwind
+- vuetify-vscode _(if using vuetify)_
+- Tailwind CSS Intellisense _(if using tailwind)_
 
 ---
 
@@ -73,14 +51,15 @@ Open Terminal
 - `npx nuxi init nuxt-app`
   Rename your folder however you want it, in this case its erik-nuxt3-starter
 - `cd erik-nuxt3-starter`
-- `mkdir assets components pages server store`
+- `mkdir pages server store`
   These directories have different purposes:
 
-  1. **assets**: contains your un-compiled assets such as css files, images, or fonts.
-  2. **components**: contains your Vue.js Components.
-  3. **pages**: contains your application views and routes. Nuxt3 will read all the .vue files inside this directory and set them up as application routes using the file name as the path.
-  4. **server**: contains the server side of your app, which is the backend of your application.
-  5. **store**: contains your Pinia store. Pinia is used for state management, that lets you transfer data between components without using props or events.
+  1. **pages**: contains your application views and routes. Nuxt3 will read all the .vue files inside this directory and set them up as application routes using the file name as the path.
+  2. **server**: contains the server side of your app, which is the backend of your application.
+  3. **store**: contains your Pinia store. Pinia is used for state management, that lets you transfer data between components without using props or events
+     **Other directories:**
+  4. **components**: contains your Vue.js Components.
+  5. **assets**: contains your un-compiled assets such as css files, images, or fonts.
 
 - `yarn add vue`
   The next step is to add boilerplate dependencies:
@@ -176,6 +155,37 @@ module.exports = {
 
 Do you have the prettier extension installed in your editor? Prettier will automatically format your code when you save, using the config you made in .prettierrc.js.
 
+###app.vue
+
+```html
+<template>
+  <div id="app">
+    <NuxtPage />
+  </div>
+</template>
+
+<script setup lang="ts">
+  useHead({
+    title: "Nuxt3 App",
+    meta: [{ name: "Nuxt3 App", content: "Nuxt3 App" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    bodyAttrs: {
+      class: "body",
+    },
+  });
+</script>
+
+<style lang="scss"></style>
+```
+
+app.vue is the root component of your app. Every page using nuxt3's file based routing will be rendered inside the NuxtPage component. If you want to use a custom layout, you can use the NuxtLayout component instead. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
+
+You can read more about layouts [here](https://v3.nuxtjs.org/docs/directory-structure/layouts).
+
+Do note the setup property in the script tag, this is used to write our Vue3 code in the composition API style. This style is modular and is closer to vanilla Javascript than the options API style.
+
+You can read more about the composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
+
 ###pages/index.vue
 
 ```html
@@ -190,124 +200,15 @@ Do you have the prettier extension installed in your editor? Prettier will autom
 <style scoped lang="scss"></style>
 ```
 
----
+This is the index.vue page, which is rendered at the base route of your app (localhost:3000/).
 
-# Initialize Pinia Store
+You can read more about pages [here](https://v3.nuxtjs.org/docs/directory-structure/pages).
 
-`yarn add @pinia/nuxt`
-
-###store/store.ts
-
-```tsx
-export const useNuxtStore = defineStore("nuxt-store", () => {
-  const env = useRuntimeConfig().public.env as "development" | "test" | "production";
-});
-
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useNuxtStore, import.meta.hot));
-}
-```
-
----
-
-# 2. Choose Vuetify/SCSS or Tailwind
-
-### Vuetify/SCSS
-
-- Vuetify (design components)
-  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/503c6fdc-afda-44c9-8d4d-d30dd8a8fa7d/Untitled.png)
-- Scss (CSS pre-processor)
-  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/16345e3a-e732-4e9f-94b2-fa54c784c106/Untitled.png)
-- `yarn add vuetify@next @mdi/font sass`
-
-plugins/vuetify.js
+###nuxt.config.ts
 
 ```jsx
-import { createVuetify } from "vuetify";
-import * as components from "vuetify/components";
-import * as directives from "vuetify/directives";
-
-export default defineNuxtPlugin((nuxtApp) => {
-  const vuetify = createVuetify({
-    components,
-    directives,
-  });
-
-  nuxtApp.vueApp.use(vuetify);
-});
-```
-
-app.vue
-
-```html
-<template>
-  <div id="app">
-    <v-app>
-      <v-main
-         <NuxtPage />
-      </v-main>
-    </v-app>
-  </div>
-</template>
-
-<script setup lang="ts">
-useHead({
-  title: 'Nuxt app',
-  meta: [{ name: 'Nuxt app', content: 'Nuxt app' }],
-  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-  bodyAttrs: {
-    class: 'body',
-  },
-})
-
-const store = useNuxtStore()
-
-if (process.client) {
-  console.log('Nuxt 3 app listening on ' + window.location.protocol + '//' + window.location.host + ' in ' + store.env + ' environment.')
-}
-</script>
-
-<style src="@/assets/css/main.scss" lang="scss" />
-```
-
-/assets/css/main.scss
-
-```scss
-html,
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-  }
-}
-```
-
-Update nuxt.config.ts to look like this
-
-```tsx
-/**
- * @see https://v3.nuxtjs.org/api/configuration/nuxt-config/
- * @see https://v3.nuxtjs.org/getting-started/deployment/
- * @see https://v3.nuxtjs.org/guide/concepts/rendering/
- * @see https://next.vuetifyjs.com/en/
- * @see https://nuxt-security.vercel.app/
- */
-
 export default defineNuxtConfig({
   ssr: true,
-  modules: [
-    [
-      "@pinia/nuxt",
-      {
-        autoImports: ["defineStore", "acceptHMRUpdate"],
-      },
-    ],
-    "nuxt-security",
-  ],
   vite: {
     define: {
       "process.env.DEBUG": false,
@@ -318,47 +219,80 @@ export default defineNuxtConfig({
       env: process.env.ENVIRONMENT,
     },
   },
-  build: {
-    transpile: ["vuetify"],
-  },
-  css: ["~/assets/css/main.scss", "vuetify/lib/styles/main.sass", "@mdi/font/css/materialdesignicons.min.css"],
-  imports: {
-    dirs: ["store"],
-  },
-  security: {
-    hidePoweredBy: false,
-  },
+  modules: [],
 });
 ```
 
+This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
+
+- The ssr property is used to enable or disable server side rendering.
+  https://v3.nuxtjs.org/guide/concepts/rendering/
+- The vite property is used to configure vite, which is the build tool used by nuxt3.
+  https://vitejs.dev/guide/why.html
+- The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
+  https://nuxt.com/docs/api/composables/use-runtime-config
+- The modules property is used to configure nuxt modules.
+  https://v3.nuxtjs.org/docs/directory-structure/modules
+
 ---
 
-### Tailwind
+# Pinia
 
-- Tailwind (CSS Utility Classes)
-  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ff65a435-152f-4d50-8049-a4ebba6d8c19/Untitled.png)
-- `yarn add --dev @nuxtjs/tailwindcss prettier-plugin-tailwindcss`
+`yarn add @pinia/nuxt`
 
-nuxt.config.ts
+###store/store.ts
 
 ```tsx
-modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss'],
+export const useNuxtStore = defineStore("nuxt-store", () => {
+  const env = useRuntimeConfig().public.env as "development" | "test" | "production";
+  return {
+    env,
+  };
+});
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useNuxtStore, import.meta.hot));
+}
 ```
 
-- `npx tailwindcss init`
+This is the store file. It is a typescript file, and it is using the pinia library. Pinia is the standard state management system established by the vue core team. The store is defined using the defineStore() function. The first argument is the name of the store, and the second argument is a function that returns an object. This object contains the state, getters, mutations, and actions of the store. By declaring the function with the ()=> syntax, the store is written in the Vue3 composition api syntax. The store is then exported as a function called useNuxtStore(). By using the last part of the file, this function can be used in any component.
 
-Add this to tailwind.config.js to enable tailwind class order formatting
+You can read more about pinia [here](https://pinia.esm.dev/).
 
-```jsx
-plugins: [require('prettier-plugin-tailwindcss')],
+The variable declared is env, which is retrieved from the public runtime config. This variable serves as an example on how to declare pinia state variables, and can be used across the whole app to access an environment variable that we want to expose to the client. For example, if we want to use a different API url in development than in production.
+
+Add the following to the **module array of nuxt.config.ts**:
+
+```tsx
+[
+    "@pinia/nuxt",
+    {
+        autoImports: ["defineStore", "acceptHMRUpdate"],
+    },
+],
+
+```
+
+Add the following to **nuxt.config.ts**:
+
+```tsx
+imports: {
+    dirs: ["store"],
+},
+```
+
+This will automatically import the store file into the app, and will also automatically import the defineStore() and acceptHMRUpdate() functions from pinia.
+
+Now in any component you can use the following code snippet to initialize the store in your script tag, which then can also be used in your html.
+
+```tsx
+const store = useNuxtStore();
 ```
 
 ---
 
-# 3. Backend (Nitro Prisma)
+# Nitro
 
-- Nitro (server engine)
-  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/639dce10-0f9b-45ea-b72b-7e3bb7d234e1/Untitled.png)
 - `yarn add h3`
 - Add middleware and api directory to /server
 
@@ -401,19 +335,103 @@ export function server() {
     return;
   }
   console.log("Starting server");
-  serverRunning = tru;
+  serverRunning = true;
 }
 ```
 
 - Add API
-- `yarn add nuxt-security`
-- https://github.com/Baroshem/nuxt-security [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally.
-- Add ‘nuxt-security’ to modules in nuxt.config.ts
 
-# 4. Add SQL Server to backend
+---
 
-- Prisma (ORM)
-  ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f3e53304-f878-452e-a0ab-153c70d6f3b3/Untitled.png)
+# Vuetify with SCSS
+
+`yarn add vuetify@next @mdi/font sass`
+
+###plugins/vuetify.js
+
+```jsx
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+
+export default defineNuxtPlugin((nuxtApp) => {
+  const vuetify = createVuetify({
+    components,
+    directives,
+  });
+
+  nuxtApp.vueApp.use(vuetify);
+});
+```
+
+###/assets/css/main.scss
+
+```scss
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+```
+
+##app.vue (change)
+
+```html
+<template>
+  <div id="app">
+    <v-app>
+      <v-main
+         <NuxtPage />
+      </v-main>
+    </v-app>
+  </div>
+</template>
+
+<script setup lang="ts"></script>
+
+<style src="@/assets/css/main.scss" lang="scss" />
+```
+
+Add the following to **nuxt.config.ts**:
+
+```tsx
+build: {
+    transpile: ["vuetify"],
+},
+css: ["~/assets/css/main.scss", "vuetify/lib/styles/main.sass", "@mdi/font/css/materialdesignicons.min.css"],
+```
+
+---
+
+# Tailwind
+
+`yarn add --dev @nuxtjs/tailwindcss prettier-plugin-tailwindcss`
+
+Add the following to the **module array of nuxt.config.ts**:
+
+```tsx
+modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss'],
+```
+
+Add this to tailwind.config.js to enable tailwind class order formatting
+
+```jsx
+plugins: [require('prettier-plugin-tailwindcss')],
+```
+
+Run the following command in terminal:
+`npx tailwindcss init`
+
+---
+
+# Prisma
+
 - `yarn add --dev prisma`
 - `npx prisma init`
 - `yarn add @prisma/client`
@@ -431,5 +449,11 @@ export default prisma;
 - `npx prisma generate`
 
 ---
+
+# Nuxt Security
+
+- `yarn add nuxt-security`
+- https://github.com/Baroshem/nuxt-security [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally.
+- Add ‘nuxt-security’ to modules in nuxt.config.ts
 
 "# erikknorren-website"
