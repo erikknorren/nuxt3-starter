@@ -1,6 +1,6 @@
-# Erik Nuxt 3 Starter
+<img src="https://nuxt.com/assets/design-kit/logo/icon-green.svg" alt="Nuxt Logo" style="height: 128px; width: 128px;"/>
 
----
+# Erik Nuxt 3 Starter
 
 Nuxt 3 Starter Guide explaining how this repository is generated and why aspects are used.
 
