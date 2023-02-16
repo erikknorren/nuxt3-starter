@@ -8,7 +8,7 @@ Nuxt 3 Starter Guide explaining how this repository is generated and why aspects
 
 Base included in this starter:
 
-- [Nuxt3 - App](##nuxt3)
+- [Nuxt3 - App](##Nuxt3)
 - [Vite - Build Tool](/readme.md#209)
 - [Pinia - State Management](/readme.md#L217)
 - [Nitro - Backend](/readme.md#L222)
