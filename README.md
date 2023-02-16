@@ -391,7 +391,7 @@ body {
     <v-app>
       <v-main
          <NuxtPage />
-      </v-main>
+      </v-main
     </v-app>
   </div>
 </template>
