@@ -13,5 +13,6 @@ module.exports = {
     "vue/multi-word-component-names": "off",
     "vue/no-multiple-template-root": "off",
     "vue/attribute-hyphenation": "off",
+    "vue/v-on-event-hyphenation": "off",
   },
 };
