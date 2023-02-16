@@ -8,7 +8,7 @@ Nuxt 3 Starter Guide explaining how this repository is generated and why aspects
 
 Base included in this starter:
 
-- [Nuxt3 - App](/readme.md#26)
+- [Nuxt3 - App](##nuxt3)
 - [Vite - Build Tool](/readme.md#209)
 - [Pinia - State Management](/readme.md#L217)
 - [Nitro - Backend](/readme.md#L222)
@@ -459,4 +459,6 @@ export default prisma
 - https://github.com/Baroshem/nuxt-security [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally.
 - Add ‘nuxt-security’ to modules in nuxt.config.ts
 
-"# erikknorren-website"
+---
+
+# Vitest
