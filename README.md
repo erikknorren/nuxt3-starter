@@ -8,7 +8,7 @@ Nuxt 3 Starter Guide explaining how this repository is generated and why aspects
 
 Base included in this starter:
 
-- [Nuxt3 - App](#nuxt-3)
+- <a href="#nuxt3">Nuxt3</a>
 - [Vite - Build Tool](/readme.md#209)
 - [Pinia - State Management](/readme.md#L217)
 - [Nitro - Backend](/readme.md#L222)
@@ -44,7 +44,7 @@ Helpful Visual Studio Code extensions:
 
 ---
 
-## Nuxt 3
+<h2 id="nuxt3">Nuxt3</h2>
 
 Open Terminal
 
