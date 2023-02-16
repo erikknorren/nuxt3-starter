@@ -1,9 +1,9 @@
-let serverRunning = false;
+let serverRunning = false
 
 export function server() {
   if (serverRunning) {
-    return;
+    return
   }
-  console.log("Starting server");
-  serverRunning = true;
+  console.log('Starting server')
+  serverRunning = true
 }
