@@ -111,17 +111,17 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ["@nuxtjs/eslint-config-typescript", "plugin:prettier/recommended"],
+  extends: ['@nuxtjs/eslint-config-typescript', 'plugin:prettier/recommended'],
   plugins: [],
   rules: {
-    "no-console": "off",
-    "import/default": "off",
-    "import/no-named-as-default-member": "off",
-    "vue/multi-word-component-names": "off",
-    "vue/no-multiple-template-root": "off",
-    "vue/attribute-hyphenation": "off",
+    'no-console': 'off',
+    'import/default': 'off',
+    'import/no-named-as-default-member': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/no-multiple-template-root': 'off',
+    'vue/attribute-hyphenation': 'off',
   },
-};
+}
 ```
 
 change package.json `scripts` object to the following by adding a `lint` script command:
@@ -150,7 +150,7 @@ module.exports = {
   singleQuote: true,
   printWidth: 150,
   tabWidth: 2,
-};
+}
 ```
 
 Do you have the prettier extension installed in your editor? Prettier will automatically format your code when you save, using the config you made in .prettierrc.js.
@@ -165,14 +165,17 @@ Do you have the prettier extension installed in your editor? Prettier will autom
 </template>
 
 <script setup lang="ts">
-  useHead({
-    title: "Nuxt3 App",
-    meta: [{ name: "Nuxt3 App", content: "Nuxt3 App" }],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-    bodyAttrs: {
-      class: "body",
-    },
-  });
+useHead({
+  title: 'Nuxt app',
+  meta: [{ name: 'Nuxt app', content: 'Nuxt app' }],
+  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+  bodyAttrs: {
+    class: 'body',
+  },
+})
+</script>
+
+<style lang="scss"></style>
 </script>
 
 <style lang="scss"></style>
@@ -211,7 +214,7 @@ export default defineNuxtConfig({
   ssr: true,
   vite: {
     define: {
-      "process.env.DEBUG": false,
+      'process.env.DEBUG': false,
     },
   },
   runtimeConfig: {
@@ -220,7 +223,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [],
-});
+})
 ```
 
 This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
@@ -243,15 +246,15 @@ This is the most important config file in your project. Your config is written i
 ### store/store.ts
 
 ```tsx
-export const useNuxtStore = defineStore("nuxt-store", () => {
-  const env = useRuntimeConfig().public.env as "development" | "test" | "production";
+export const useNuxtStore = defineStore('nuxt-store', () => {
+  const env = useRuntimeConfig().public.env as 'development' | 'test' | 'production'
   return {
     env,
-  };
-});
+  }
+})
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useNuxtStore, import.meta.hot));
+  import.meta.hot.accept(acceptHMRUpdate(useNuxtStore, import.meta.hot))
 }
 ```
 
@@ -286,7 +289,7 @@ This will automatically import the store file into the app, and will also automa
 Now in any component you can use the following code snippet to initialize the store in your script tag, which then can also be used in your html.
 
 ```tsx
-const store = useNuxtStore();
+const store = useNuxtStore()
 ```
 
 ---
@@ -299,28 +302,28 @@ const store = useNuxtStore();
 /server/middleware/middleware.ts
 
 ```tsx
-import { server } from "~/server/server";
+import { server } from '~/server/server'
 
-const publicRoutes: string[] = [];
+const publicRoutes: string[] = []
 
 export default defineEventHandler((event) => {
-  console.log("New request: " + event.path);
-  const headers = getRequestHeaders(event);
+  console.log('New request: ' + event.path)
+  const headers = getRequestHeaders(event)
   // Server Initialization
-  server();
+  server()
   // API Middleware
-  if (event.path?.startsWith("/api/")) {
+  if (event.path?.startsWith('/api/')) {
     if (publicRoutes.includes(event.path)) {
-      console.log("Public route, no authorization required");
-      return eventHandler((event) => ({ url: event.path }));
+      console.log('Public route, no authorization required')
+      return eventHandler((event) => ({ url: event.path }))
     }
-    if (headers["x-api-key"] === process.env.API_KEY) {
-      console.log("API key provided");
-      return eventHandler((event) => ({ url: event.path }));
+    if (headers['x-api-key'] === process.env.API_KEY) {
+      console.log('API key provided')
+      return eventHandler((event) => ({ url: event.path }))
     }
-    return sendError(event, createError({ statusCode: 401, statusMessage: "Unauthorized" }));
+    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized' }))
   }
-});
+})
 ```
 
 - Add server.ts file to mimic a Node.js app
@@ -328,14 +331,14 @@ export default defineEventHandler((event) => {
 /server/server.ts
 
 ```jsx
-let serverRunning = false;
+let serverRunning = false
 
 export function server() {
   if (serverRunning) {
-    return;
+    return
   }
-  console.log("Starting server");
-  serverRunning = true;
+  console.log('Starting server')
+  serverRunning = true
 }
 ```
 
@@ -350,18 +353,18 @@ export function server() {
 ### plugins/vuetify.ts
 
 ```jsx
-import { createVuetify } from "vuetify";
-import * as components from "vuetify/components";
-import * as directives from "vuetify/directives";
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     components,
     directives,
-  });
+  })
 
-  nuxtApp.vueApp.use(vuetify);
-});
+  nuxtApp.vueApp.use(vuetify)
+})
 ```
 
 ### /assets/css/main.scss
@@ -439,10 +442,10 @@ Run the following command in terminal:
 /prisma/client.ts
 
 ```tsx
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
-export default prisma;
+const prisma = new PrismaClient()
+export default prisma
 ```
 
 - `npx prisma db pull`
