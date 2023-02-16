@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   ssr: true,
   vite: {
     define: {
-      "process.env.DEBUG": false,
+      'process.env.DEBUG': false,
     },
   },
   runtimeConfig: {
@@ -12,13 +12,13 @@ export default defineNuxtConfig({
   },
   modules: [
     [
-      "@pinia/nuxt",
+      '@pinia/nuxt',
       {
-        autoImports: ["defineStore", "acceptHMRUpdate"],
+        autoImports: ['defineStore', 'acceptHMRUpdate'],
       },
     ],
   ],
   imports: {
-    dirs: ["store"],
+    dirs: ['store'],
   },
-});
+})
