@@ -78,7 +78,7 @@ Your.env file is used to store environment variables. These variables can be acc
 
 ```
 # General backend
-ENVIRONMENT="development"
+NODE_ENV="development"
 API_KEY=""
 ```
 
@@ -219,7 +219,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      env: process.env.ENVIRONMENT,
+      env: process.env.NODE_ENV,
     },
   },
   modules: [],
