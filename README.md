@@ -120,6 +120,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/no-multiple-template-root': 'off',
     'vue/attribute-hyphenation': 'off',
+    'vue/v-on-event-hyphenation': 'off',
   },
 }
 ```
@@ -148,8 +149,10 @@ Now you can run the following commands in terminal to lint, and subsequently fix
 module.exports = {
   semi: false,
   singleQuote: true,
-  printWidth: 150,
+  printWidth: 120,
   tabWidth: 2,
+  bracketSameLine: true,
+  htmlWhitespaceSensitivity: 'ignore',
 }
 ```
 
