@@ -398,7 +398,7 @@ body {
 
 <script setup lang="ts"></script>
 
-<style src="@/assets/css/main.scss" lang="scss" />
+<style src="@/assets/css/main.scss" lang="scss"></style>
 ```
 
 Add the following to **nuxt.config.ts**:
