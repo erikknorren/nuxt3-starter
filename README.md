@@ -64,7 +64,7 @@ Open Terminal
 - `yarn add vue`
   The next step is to add boilerplate dependencies:
   1. **Vue** is the frontend framework used for this app, most of vue's features are already included in nuxt3.
-- `yarn add -D typescript eslint prettier @types/node   eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
+- `yarn add --dev typescript eslint prettier @types/node   eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
   This step is installing dev dependencies:
   1. **Typescript**: we want to use strict typescript because it leads to smoother developing, building and debugging. It also helps with code completion and documentation.
   2. **ESLint**: we want to use ESLint to enforce certain code styles and rules, such as no unused variables.
