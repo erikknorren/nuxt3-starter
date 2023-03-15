@@ -1,12 +1,8 @@
-import { server } from '~/server/server'
-
 const publicRoutes: string[] = []
 
 export default defineEventHandler((event) => {
   console.log('New request: ' + event.path)
   const headers = getRequestHeaders(event)
-  // Server Initialization
-  server()
   // API Middleware
   if (event.path?.startsWith('/api/')) {
     if (publicRoutes.includes(event.path)) {

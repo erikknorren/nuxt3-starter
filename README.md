@@ -231,16 +231,16 @@ export default defineNuxtConfig({
 
 This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
 
-  <h6 id="ssr">SSR</h6>
+  <h6 id="ssr">- SSR</h6>
   The ssr property is used to enable or disable server side rendering.
   https://v3.nuxtjs.org/guide/concepts/rendering/
-  <h6 id="vite">Vite</h6>
+  <h6 id="vite">- Vite</h6>
   The vite property is used to configure vite, which is the build tool used by nuxt3.
   https://vitejs.dev/guide/why.html
-  <h6 id="runtimeconfig">Runtime config</h6>
+  <h6 id="runtimeconfig">- Runtime config</h6>
   The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
   https://nuxt.com/docs/api/composables/use-runtime-config
-  <h6 id="modules">Modules</h6>
+  <h6 id="modules">- Modules</h6>
 The modules property is used to configure nuxt modules.
   https://v3.nuxtjs.org/docs/directory-structure/modules
 
@@ -303,21 +303,35 @@ const store = useNuxtStore()
 
 <h2 id="nitro">Nitro</h2>
 
-- `yarn add h3`
-- Add middleware and api directory to /server
+`yarn add h3 nuxt-security`
+
+Nitro is the server engine used by Nuxt3. The server directory is where you can configure the server/backend of your application. Nitro uses the unjs/h3 http library built for high performance and portability.
+
+You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
+
+You can learn more about Nitro [here](https://nuxt.com/docs/guide/directory-structure/server).
+This documentation mentions a basic middleware file, api request and server plugin. Everything you need to run your backend application.
+
+/server/api/test.post.ts
+
+```tsx
+export default defineEventHandler((event) => {
+  return {
+    api: 'works',
+  }
+})
+```
+
+Similar to the pages system, you can create api endpoints by creating files in the /server/api directory. The file name is the endpoint name, and the file extension is the request method. The file should export a default function that returns an object. This object will be returned as a json response.
 
 /server/middleware/middleware.ts
 
 ```tsx
-import { server } from '~/server/server'
-
 const publicRoutes: string[] = []
 
 export default defineEventHandler((event) => {
   console.log('New request: ' + event.path)
   const headers = getRequestHeaders(event)
-  // Server Initialization
-  server()
   // API Middleware
   if (event.path?.startsWith('/api/')) {
     if (publicRoutes.includes(event.path)) {
@@ -333,23 +347,18 @@ export default defineEventHandler((event) => {
 })
 ```
 
-- Add server.ts file to mimic a Node.js app
+To protect the backend application, you want to add a basic middleware layer. Nuxt3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. It checks if the request is a public route, and if not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
 
-/server/server.ts
+/server/plugins/server.ts
 
 ```jsx
-let serverRunning = false
-
-export function server() {
-  if (serverRunning) {
-    return
-  }
-  console.log('Starting server')
-  serverRunning = true
-}
+export default defineNitroPlugin((nitroApp) => {
+  console.log('Starting server', nitroApp)
+})
 ```
 
-- Add API
+Plugins are used to extend Nitro's runtime behavior.
+Plugins are auto-registered (filename ordering) and run synchronously on the first nitro initialization. They receive nitroApp context, which can be used to hook into lifecycle events. For example, you can run CRON jobs. However, most hosting providers for nuxt3 applications are serverless. So CRON jobs are not possible.
 
 ---
 
