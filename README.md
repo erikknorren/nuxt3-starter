@@ -426,14 +426,14 @@ These last two steps are required to make sure the main.scss file is compiled an
 ```html
 <style scoped lang="scss"></style>
 ```
+
 This will make sure the css is only applied to that component.
 
 ---
 
 <h2 id="vuetify">Vuetify</h2>
 
-<b>If you are planning to use Vuetify, It is required to follow the <a href="#scss">SCSS</a> step first. You do not want to use Tailwind in combination.</b> 
-
+<b>If you are planning to use Vuetify, It is required to follow the <a href="#scss">SCSS</a> step first. You do not want to use Tailwind in combination.</b>
 
 `yarn add vuetify@next @mdi/font`
 
@@ -472,13 +472,18 @@ app.vue (change)
 </template>
 ```
 
-nuxt.config.ts (add to css array and add build property object)
+nuxt.config.ts (add to css property array)
+
+```tsx
+'vuetify/lib/styles/main.sass', '@mdi/font/css/materialdesignicons.min.css'
+```
+
+nuxt.config.ts (add build property object)
 
 ```tsx
 build: {
     transpile: ["vuetify"],
 },
-css: ["vuetify/lib/styles/main.sass", "@mdi/font/css/materialdesignicons.min.css"],
 ```
 
 ---
@@ -487,20 +492,48 @@ css: ["vuetify/lib/styles/main.sass", "@mdi/font/css/materialdesignicons.min.css
 
 `yarn add --dev @nuxtjs/tailwindcss prettier-plugin-tailwindcss`
 
-Add the following to the **module array of nuxt.config.ts**:
+Tailwind CSS is a utility-first CSS framework. It is a very popular CSS framework, allowing you to write inline css without opiniated best practies.
+
+You can learn more about Tailwind CSS [here](https://tailwindcss.com/docs).
+
+nuxt.config.ts (add to modules array)
 
 ```tsx
-modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss'],
+'@nuxtjs/tailwindcss'
 ```
 
-Add this to tailwind.config.js to enable tailwind class order formatting
+nuxt.config.ts (add tailwindcss property object)
 
-```jsx
-plugins: [require('prettier-plugin-tailwindcss')],
+```tsx
+tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js',
+    exposeConfig: false,
+    injectPosition: 0,
+    viewer: true,
+},
 ```
 
 Run the following command in terminal:
 `npx tailwindcss init`
+
+tailwind.config.js
+```jsx
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+    './app.vue',
+  ],
+  theme: {},
+  plugins: [require('prettier-plugin-tailwindcss')],
+}
+```
+This configures Tailwind CSS to use the tailwind.css file, and to use the tailwind.config.js file. It also adds the prettier-plugin-tailwindcss plugin, which allows you to format your tailwind css with prettier and standardize your class order.
 
 ---
 
