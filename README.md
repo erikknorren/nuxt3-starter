@@ -352,7 +352,8 @@ You can find the documentation for h3 functions [here](https://www.jsdocs.io/pac
 ```tsx
 export default defineEventHandler((event) => {
   return {
-    api: 'works',
+    url: event.node.req.url,
+    method: event.node.req.method,
   }
 })
 ```
@@ -403,7 +404,7 @@ To protect the backend application, you want to add a basic middleware layer. Nu
 
 ```tsx
 export default defineNitroPlugin((nitroApp) => {
-  console.log('Starting server')
+  console.log('Starting Nitro server with h3 options:', nitroApp.h3App.options)
 })
 ```
 
