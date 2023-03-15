@@ -1,4 +1,4 @@
-export const useNuxtStore = defineStore('nuxt-store', () => {
+export const useStore = defineStore('pinia-store', () => {
   const env = useRuntimeConfig().public.env as 'development' | 'test' | 'production'
   return {
     env,
@@ -6,5 +6,5 @@ export const useNuxtStore = defineStore('nuxt-store', () => {
 })
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useNuxtStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot))
 }
