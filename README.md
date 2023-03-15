@@ -90,7 +90,7 @@ API_KEY=""
 
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
-###.tsconfig.json
+### .tsconfig.json
 
 ```json
 {
@@ -109,7 +109,7 @@ You can learn more abou Typescript [here](https://www.typescriptlang.org/docs/ha
 
 You can learn more about Typescript with Nuxt 3 [here](https://v3.nuxtjs.org/concepts/typescript).
 
-###.eslintrc.js
+### .eslintrc.js
 
 ```jsx
 module.exports = {
@@ -187,7 +187,7 @@ This file is used to tell git which files to ignore. You can add files to this l
 
 You can learn more about git and .gitignore [here](https://git-scm.com/docs).
 
-###app.vue
+### app.vue
 
 ```html
 <template>
