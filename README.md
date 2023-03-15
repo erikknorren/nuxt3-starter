@@ -1,10 +1,16 @@
 <img src="https://nuxt.com/assets/design-kit/logo/icon-green.svg" alt="Nuxt Logo" style="height: 128px; width: 128px;"/>
 
-# Erik Nuxt 3 Starter
+# Nuxt 3 Starter
 
 Nuxt 3 Starter Guide explaining how this repository is generated and why aspects are used.
 
----
+Nuxt 3 is a meta framework build on top of Vue.js, Vite, Nitro, and Typescript. It is a framework for building modern web applications. Nuxt provides both frontend and backend functionality so you can focus your attention to a single project. The interconnectivity between frontend and backend can be powered up by Typescript which makes it easier to develop, build, and debug. You can even extend this connectivity to your database with Prisma.
+
+You can learn more about the basics, as well as documentation of Nuxt 3 [here](https://nuxt.com/docs).
+
+You can learn more about Vue.js [here](https://vuejs.org/guide/introduction.html).
+
+--- 
 
 Base included in this starter:
 
