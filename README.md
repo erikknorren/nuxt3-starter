@@ -9,23 +9,23 @@ Nuxt 3 Starter Guide explaining how this repository is generated and why aspects
 Base included in this starter:
 
 - <a href="#nuxt3">Nuxt3</a>
-- [Vite - Build Tool](/readme.md#209)
-- [Pinia - State Management](/readme.md#L217)
-- [Nitro - Backend](/readme.md#L222)
+- <a href="#vite">Vite - Build Tool</a>
+- <a href="#pinia">Pinia - State Management</a>
+- <a href="#nitro">Nitro - Backend</a>
 
 ---
 
 Frontend Additions:
 
-- [Vuetify - Design Framework with SCSS](/readme.md#L246)
-- [Tailwind - CSS Utility Classes](/readme.md#L367)
+- <a href="#vuetify">Vuetify - Design Framework with SCSS</a>
+- <a href="#tailwind">Tailwind - CSS Utility Classes</a>
 
 ---
 
 Backend Additions:
 
-- [Prisma - ORM](/readme.md#L390)
-- [Nuxt-Security - Security](/readme.md#L399)
+- <a href="#prisma">Prisma - ORM</a>
+- <a href="#nuxt-security">Nuxt-Security - Security</a>
 
 ---
 
@@ -231,18 +231,22 @@ export default defineNuxtConfig({
 
 This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
 
-- The ssr property is used to enable or disable server side rendering.
+  <h6 id="ssr">SSR</h6>
+  The ssr property is used to enable or disable server side rendering.
   https://v3.nuxtjs.org/guide/concepts/rendering/
-- The vite property is used to configure vite, which is the build tool used by nuxt3.
+  <h6 id="vite">Vite</h6>
+  The vite property is used to configure vite, which is the build tool used by nuxt3.
   https://vitejs.dev/guide/why.html
-- The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
+  <h6 id="runtimeconfig">Runtime config</h6>
+  The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
   https://nuxt.com/docs/api/composables/use-runtime-config
-- The modules property is used to configure nuxt modules.
+  <h6 id="modules">Modules</h6>
+The modules property is used to configure nuxt modules.
   https://v3.nuxtjs.org/docs/directory-structure/modules
 
 ---
 
-# Pinia
+<h2 id="pinia">Pinia</h2>
 
 `yarn add @pinia/nuxt`
 
@@ -297,7 +301,7 @@ const store = useNuxtStore()
 
 ---
 
-# Nitro
+<h2 id="nitro">Nitro</h2>
 
 - `yarn add h3`
 - Add middleware and api directory to /server
@@ -349,7 +353,7 @@ export function server() {
 
 ---
 
-# Vuetify with SCSS
+<h2 id="vuetify">Vuetify with SCSS</h2>
 
 `yarn add vuetify@next @mdi/font sass`
 
@@ -415,7 +419,7 @@ css: ["~/assets/css/main.scss", "vuetify/lib/styles/main.sass", "@mdi/font/css/m
 
 ---
 
-# Tailwind
+<h2 id="tailwind">Tailwind</h2>
 
 `yarn add --dev @nuxtjs/tailwindcss prettier-plugin-tailwindcss`
 
@@ -436,7 +440,7 @@ Run the following command in terminal:
 
 ---
 
-# Prisma
+<h2 id="prisma">Prisma</h2>
 
 - `yarn add --dev prisma`
 - `npx prisma init`
@@ -456,7 +460,7 @@ export default prisma
 
 ---
 
-# Nuxt Security
+<h2 id="nuxt-security">Nuxt Security</h2>
 
 - `yarn add nuxt-security`
 - https://github.com/Baroshem/nuxt-security [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally.
