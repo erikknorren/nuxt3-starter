@@ -391,7 +391,7 @@ To protect the backend application, you want to add a basic middleware layer. Nu
 
 ```tsx
 export default defineNitroPlugin((nitroApp) => {
-  console.log('Starting server', nitroApp)
+  console.log('Starting server')
 })
 ```
 
