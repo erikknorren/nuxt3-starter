@@ -1,3 +1,3 @@
 export default defineNitroPlugin((nitroApp) => {
-  console.log('Starting server', nitroApp)
+  console.log('Starting server')
 })
