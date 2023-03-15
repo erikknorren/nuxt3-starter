@@ -572,11 +572,14 @@ This configures Tailwind CSS to use the tailwind.css file, and to use the tailwi
 
 <h2 id="prisma">Prisma</h2>
 
-- `yarn add --dev prisma`
-- `npx prisma init`
-- `yarn add @prisma/client`
+`yarn add --dev prisma`
+`yarn add @prisma/client`
 
-/prisma/client.ts
+Prisma is an ORM, which is a layer that maps your database structure to the programming language you are using in your application. It allows you to bridge the gap between the backend part of your Nuxt 3 application and your database. It allows for easy to use database queries using Typescript, which allows you to achieve typesafety across your whole technology stack. It also prevents you from having to write SQL queries in a non SQL environment/language which is prone to errors.
+
+You can learn more about Prisma [here](https://www.prisma.io/docs).
+
+### /prisma/client.ts
 
 ```tsx
 import { PrismaClient } from '@prisma/client'
@@ -584,6 +587,14 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 export default prisma
 ```
+
+`npx prisma init`
+
+This command generates a schema.prisma file in the prisma folder. This file is used to configure your database connection and to generate your database models. Also, a DATABASE_URL variable is created in **.env**. You need to overwrite this variable with the correctly formatted database url, which looks a lot like a connection string.
+
+You can find the correct format [here](https://www.prisma.io/docs/reference/database-reference/connection-urls).
+
+After that, to start importing and using your database model, you can run the following commands in terminal.
 
 - `npx prisma db pull`
 - `npx prisma generate`
