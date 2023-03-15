@@ -10,7 +10,7 @@ You can learn more about the basics, as well as documentation of Nuxt 3 [here](h
 
 You can learn more about Vue.js [here](https://vuejs.org/guide/introduction.html).
 
---- 
+---
 
 Base included in this starter:
 
@@ -64,8 +64,14 @@ Open Terminal
   2. **server**: contains the server side of your app, which is the backend of your application.
   3. **store**: contains your Pinia store. Pinia is used for state management, that lets you transfer data between components without using props or events
      **Other directories:**
-  4. **components**: contains your Vue.js Components.
-  5. **assets**: contains your un-compiled assets such as css files, images, or fonts.
+  4. **[components](https://nuxt.com/docs/guide/directory-structure/components)**: contains your Vue.js Components.
+  5. **[plugins](https://nuxt.com/docs/guide/directory-structure/plugins)**: contains your plugins, which are JavaScript packages that you can add to your application at runtime. 
+  6. **[composables](https://nuxt.com/docs/guide/directory-structure/composables)**: contains composables, which are functions that can be used in multiple components. Composables can be recognized by the use prefix.
+  7. **[utils](https://nuxt.com/docs/guide/directory-structure/utils)**: contains utility functions that can be used in multiple places. Similar to composables 
+  8. **[layouts](https://nuxt.com/docs/guide/directory-structure/layouts)**: contains customizable layouts used to create complex UIs.
+  9. **[assets](https://nuxt.com/docs/guide/directory-structure/assets)**: contains your un-compiled assets such as css files, images, or fonts.
+  10. **[public](https://nuxt.com/docs/guide/directory-structure/public)**: directory is directly served at the server root and contains public files that have to keep their names
+  11. **[content](https://nuxt.com/docs/guide/directory-structure/content)**: contains your content files, such as markdown files. Used to create a file based CMS.
 
 - `yarn add vue`
   The next step is to add boilerplate dependencies:
@@ -105,9 +111,9 @@ You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
 This file is used to configure Typescript. It extends the Nuxt 3 Typescript config, and adds the Pinia types.
 
-You can learn more abou Typescript [here](https://www.typescriptlang.org/docs/handbook/intro.html).
+You can learn more about Typescript [here](https://www.typescriptlang.org/docs/handbook/intro.html).
 
-You can learn more about Typescript with Nuxt 3 [here](https://v3.nuxtjs.org/concepts/typescript).
+You can learn more about Typescript with Nuxt 3 [here](https://nuxt.com/docs/guide/concepts/typescript).
 
 ### .eslintrc.js
 
@@ -208,9 +214,7 @@ You can learn more about git and .gitignore [here](https://git-scm.com/docs).
 </script>
 ```
 
-app.vue is the root component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. If you want to use a custom layout, you can use the NuxtLayout component instead. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
-
-You can read more about layouts [here](https://nuxt.com/docs/guide/directory-structure/layouts).
+app.vue is the root component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
 
 Do note the setup property in the script tag, this is used to write our Vue 3 code in the composition API style. This style is modular and is closer to vanilla Javascript than the options API style.
 
@@ -230,7 +234,7 @@ You can read more about the composition API [here](https://v3.vuejs.org/guide/co
 
 This is the index.vue page, which is rendered at the base route of your app (localhost:3000/).
 
-You can read more about pages [here](https://nuxtjs.org/docs/directory-structure/pages/).
+You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
 
 ### nuxt.config.ts
 
@@ -336,7 +340,7 @@ const store = useNuxtStore()
 
 Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. Nitro uses the unjs/h3 http library built for high performance and portability.
 
-You can learn more about Nitro [here](https://nuxt.com/docs/guide/directory-structure/server).
+You can learn more about server directory/Nitro [here](https://nuxt.com/docs/guide/directory-structure/server).
 This documentation mentions a basic middleware file, api request and server plugin. Everything you need to run your backend application.
 
 You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
@@ -478,7 +482,7 @@ Vuetify is a Material Design component framework for Vue.js. It is a very popula
 
 You can learn more about Vuetify [here](https://vuetifyjs.com/en/getting-started/installation/).
 
-/plugins/vuetify.ts
+### /plugins/vuetify.ts
 
 ```jsx
 import { createVuetify } from 'vuetify'
