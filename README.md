@@ -8,7 +8,7 @@ Nuxt 3 Starter Guide explaining how this repository is generated and why aspects
 
 Base included in this starter:
 
-- <a href="#nuxt3">Nuxt3</a>
+- <a href="#nuxt3">Nuxt 3</a>
 - <a href="#vite">Vite - Build Tool</a>
 - <a href="#pinia">Pinia - State Management</a>
 - <a href="#nitro">Nitro - Backend</a>
@@ -25,7 +25,6 @@ Frontend Additions:
 Backend Additions:
 
 - <a href="#prisma">Prisma - ORM</a>
-- <a href="#nuxt-security">Nuxt-Security - Security</a>
 
 ---
 
@@ -44,7 +43,7 @@ Helpful Visual Studio Code extensions:
 
 ---
 
-<h2 id="nuxt3">Nuxt3</h2>
+<h2 id="nuxt3">Nuxt 3</h2>
 
 Open Terminal
 
@@ -54,7 +53,7 @@ Open Terminal
 - `mkdir pages server store`
   These directories have different purposes:
 
-  1. **pages**: contains your application views and routes. Nuxt3 will read all the .vue files inside this directory and set them up as application routes using the file name as the path.
+  1. **pages**: contains your application views and routes. Nuxt 3 will read all the .vue files inside this directory and set them up as application routes using the file name as the path.
   2. **server**: contains the server side of your app, which is the backend of your application.
   3. **store**: contains your Pinia store. Pinia is used for state management, that lets you transfer data between components without using props or events
      **Other directories:**
@@ -63,10 +62,10 @@ Open Terminal
 
 - `yarn add vue`
   The next step is to add boilerplate dependencies:
-  1. **Vue** is the frontend framework used for this app, most of vue's features are already included in nuxt3.
+  1. **Vue** is the frontend framework used for this app, most of vue's features are already included in Nuxt 3.
 - `yarn add --dev typescript eslint prettier @types/node   eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
   This step is installing dev dependencies:
-  1. **Typescript**: we want to use strict typescript because it leads to smoother developing, building and debugging. It also helps with code completion and documentation.
+  1. **Typescript**: we want to use strict Typescript because it leads to smoother developing, building and debugging. It also helps with code completion and documentation.
   2. **ESLint**: we want to use ESLint to enforce certain code styles and rules, such as no unused variables.
   3. **Prettier**: we want to use Prettier to enforce certain code formatting, such as no semicolons.
 
@@ -82,12 +81,10 @@ NODE_ENV="development"
 API_KEY=""
 ```
 
-You can generate an api key on [https://codepen.io/corenominal/pen/rxOmMJ](https://codepen.io/corenominal/pen/rxOmMJ)
+You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
 ###.tsconfig.json
-https://v3.nuxtjs.org/concepts/typescript
-
-```jsx
+```json
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
@@ -98,9 +95,9 @@ https://v3.nuxtjs.org/concepts/typescript
 }
 ```
 
-This file is used to configure typescript. It extends the nuxt3 typescript config, and adds the pinia types.
+This file is used to configure Typescript. It extends the Nuxt 3 Typescript config, and adds the Pinia types.
 
-[/How to use types in Nuxt3](/readme.md#L123)
+You can learn more about Typescript with Nuxt 3 [here](https://v3.nuxtjs.org/concepts/typescript).
 
 ###.eslintrc.js
 
@@ -184,11 +181,11 @@ useHead({
 <style lang="scss"></style>
 ```
 
-app.vue is the root component of your app. Every page using nuxt3's file based routing will be rendered inside the NuxtPage component. If you want to use a custom layout, you can use the NuxtLayout component instead. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
+app.vue is the root component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. If you want to use a custom layout, you can use the NuxtLayout component instead. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
 
-You can read more about layouts [here](https://v3.nuxtjs.org/docs/directory-structure/layouts).
+You can read more about layouts [here](https://nuxt.com/docs/guide/directory-structure/layouts).
 
-Do note the setup property in the script tag, this is used to write our Vue3 code in the composition API style. This style is modular and is closer to vanilla Javascript than the options API style.
+Do note the setup property in the script tag, this is used to write our Vue 3 code in the composition API style. This style is modular and is closer to vanilla Javascript than the options API style.
 
 You can read more about the composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
 
@@ -235,7 +232,7 @@ This is the most important config file in your project. Your config is written i
   The ssr property is used to enable or disable server side rendering.
   https://v3.nuxtjs.org/guide/concepts/rendering/
   <h6 id="vite">- Vite</h6>
-  The vite property is used to configure vite, which is the build tool used by nuxt3.
+  The vite property is used to configure vite, which is the build tool used by Nuxt 3.
   https://vitejs.dev/guide/why.html
   <h6 id="runtimeconfig">- Runtime config</h6>
   The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
@@ -265,9 +262,9 @@ if (import.meta.hot) {
 }
 ```
 
-This is the store file. It is a typescript file, and it is using the pinia library. Pinia is the standard state management system established by the vue core team. The store is defined using the defineStore() function. The first argument is the name of the store, and the second argument is a function that returns an object. This object contains the state, getters, mutations, and actions of the store. By declaring the function with the ()=> syntax, the store is written in the Vue3 composition api syntax. The store is then exported as a function called useNuxtStore(). By using the last part of the file, this function can be used in any component.
+This is the store file. It is a Typescript file, and it is using the Pinia library. Pinia is the standard state management system established by the Vue core team. The store is defined using the defineStore() function. The first argument is the name of the store, and the second argument is a function that returns an object. This object contains the state, getters, mutations, and actions of the store. By declaring the function with the ()=> syntax, the store is written in the Vue 3 composition api syntax. The store is then exported as a function called useNuxtStore(). By using the last part of the file, this function can be used in any component.
 
-You can read more about pinia [here](https://pinia.esm.dev/).
+You can read more about Pinia [here](https://pinia.esm.dev/).
 
 The variable declared is env, which is retrieved from the public runtime config. This variable serves as an example on how to declare pinia state variables, and can be used across the whole app to access an environment variable that we want to expose to the client. For example, if we want to use a different API url in development than in production.
 
@@ -305,12 +302,12 @@ const store = useNuxtStore()
 
 `yarn add h3 nuxt-security`
 
-Nitro is the server engine used by Nuxt3. The server directory is where you can configure the server/backend of your application. Nitro uses the unjs/h3 http library built for high performance and portability.
-
-You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
+Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. Nitro uses the unjs/h3 http library built for high performance and portability.
 
 You can learn more about Nitro [here](https://nuxt.com/docs/guide/directory-structure/server).
 This documentation mentions a basic middleware file, api request and server plugin. Everything you need to run your backend application.
+
+You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
 
 /server/api/test.post.ts
 
@@ -323,6 +320,21 @@ export default defineEventHandler((event) => {
 ```
 
 Similar to the pages system, you can create api endpoints by creating files in the /server/api directory. The file name is the endpoint name, and the file extension is the request method. The file should export a default function that returns an object. This object will be returned as a json response.
+
+To access dynamic route parameters, query parameters, hearders and body you can use the event context.
+
+```tsx
+const params = event.context.params
+const query = getQuery(event)
+const headers = getRequestHeaders(event)
+const body = await readBody(event)
+```
+
+Note that reading of the request body is called asynchronously, so you need to use the await keyword. Make sure to include the async keyword before the arrow function definition like so:
+
+```tsx
+export default defineEventHandler(async (event) => {})
+```
 
 /server/middleware/middleware.ts
 
@@ -347,18 +359,37 @@ export default defineEventHandler((event) => {
 })
 ```
 
-To protect the backend application, you want to add a basic middleware layer. Nuxt3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. It checks if the request is a public route, and if not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
+To protect the backend application, you want to add a basic middleware layer. Nuxt 3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. It checks if the request is a public route, and if not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
 
 /server/plugins/server.ts
 
-```jsx
+```tsx
 export default defineNitroPlugin((nitroApp) => {
   console.log('Starting server', nitroApp)
 })
 ```
 
 Plugins are used to extend Nitro's runtime behavior.
-Plugins are auto-registered (filename ordering) and run synchronously on the first nitro initialization. They receive nitroApp context, which can be used to hook into lifecycle events. For example, you can run CRON jobs. However, most hosting providers for nuxt3 applications are serverless. So CRON jobs are not possible.
+Plugins are auto-registered (filename ordering) and run synchronously on the first nitro initialization. They receive nitroApp context, which can be used to hook into lifecycle events. For example, you can run CRON jobs. However, most hosting providers for Nuxt 3 applications are serverless. So CRON jobs are unreliable, since runtime is limited to the request-response cycle.
+
+<h4 id="nuxt-security">Nuxt Security</h4>
+
+Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to worry about security headers, as opposed to have to configure every security header yourself. For example:
+
+- Request rate limiting
+- Request size limiting
+- XSS Validator
+- CORS Handler
+
+nuxt/config.ts (add to modules array)
+
+```tsx
+modules: ['nuxt-security']
+```
+
+It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading. You can configure the headers in nuxt.config/ts in a
+`security: {}` section.
+You can learn more about Nuxt Security [here](https://nuxt-security.vercel.app/getting-started/setup).
 
 ---
 
@@ -468,13 +499,3 @@ export default prisma
 - `npx prisma generate`
 
 ---
-
-<h2 id="nuxt-security">Nuxt Security</h2>
-
-- `yarn add nuxt-security`
-- https://github.com/Baroshem/nuxt-security [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally.
-- Add ‘nuxt-security’ to modules in nuxt.config.ts
-
----
-
-# Vitest

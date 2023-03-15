@@ -1,4 +1,4 @@
-const publicRoutes: string[] = []
+const publicRoutes: string[] = ['/api/test']
 
 export default defineEventHandler((event) => {
   console.log('New request: ' + event.path)
