@@ -71,7 +71,8 @@ Open Terminal
   8. **[layouts](https://nuxt.com/docs/guide/directory-structure/layouts)**: contains customizable layouts used to create complex UIs.
   9. **[assets](https://nuxt.com/docs/guide/directory-structure/assets)**: contains your un-compiled assets such as css files, images, or fonts.
   10. **[public](https://nuxt.com/docs/guide/directory-structure/public)**: directory is directly served at the server root and contains public files that have to keep their names
-  11. **[content](https://nuxt.com/docs/guide/directory-structure/content)**: contains your content files, such as markdown files. Used to create a file based CMS.
+  11. **[middleware](https://nuxt.com/docs/guide/directory-structure/middleware)**: contains customizable route middleware that you can use throughout your frontend. These can be used for your auth provider for example. Do not confuse with the server/middleware directory, that is used to protect your api routes.
+  12. **[content](https://nuxt.com/docs/guide/directory-structure/content)**: contains your content files, such as markdown files. Used to create a file based CMS.
 
 - `yarn add vue`
   The next step is to add boilerplate dependencies:
