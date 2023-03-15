@@ -1,5 +1,6 @@
 export default defineEventHandler((event) => {
   return {
-    api: 'works',
+    url: event.node.req.url,
+    method: event.node.req.method,
   }
 })
