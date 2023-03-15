@@ -99,6 +99,8 @@ You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
 This file is used to configure Typescript. It extends the Nuxt 3 Typescript config, and adds the Pinia types.
 
+You can learn more abou Typescript [here](https://www.typescriptlang.org/docs/handbook/intro.html).
+
 You can learn more about Typescript with Nuxt 3 [here](https://v3.nuxtjs.org/concepts/typescript).
 
 ###.eslintrc.js
@@ -142,6 +144,8 @@ Now you can run the following commands in terminal to lint, and subsequently fix
 `yarn lint`
 `yarn lint --fix`
 
+You can learn more about how to configure ESLint [here](https://eslint.org/docs/latest/use/configure/).
+
 ### .prettierrc.js
 
 ```jsx
@@ -157,6 +161,7 @@ module.exports = {
 
 Do you have the prettier extension installed in your editor? Prettier will automatically format your code when you save, using the config you made in .prettierrc.js.
 
+You can learn more about Prettier [here](https://prettier.io/docs/en/index.html).
 ###app.vue
 
 ```html
@@ -200,7 +205,7 @@ You can read more about the composition API [here](https://v3.vuejs.org/guide/co
 
 This is the index.vue page, which is rendered at the base route of your app (localhost:3000/).
 
-You can read more about pages [here](https://v3.nuxtjs.org/docs/directory-structure/pages).
+You can read more about pages [here](https://nuxtjs.org/docs/directory-structure/pages/).
 
 ### nuxt.config.ts
 
@@ -221,20 +226,24 @@ export default defineNuxtConfig({
 })
 ```
 
-This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
+This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function. It
 
-<h6 id="ssr">- SSR</h6>
-The ssr property is used to enable or disable server side rendering.
-https://v3.nuxtjs.org/guide/concepts/rendering/
-<h6 id="vite">- Vite</h6>
-The vite property is used to configure vite, which is the build tool used by Nuxt 3.
-https://vitejs.dev/guide/why.html
-<h6 id="runtimeconfig">- Runtime config</h6>
+<h4 id="ssr">SSR</h4>
+The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser. 
+
+You can learn more about rendering concepts [here](https://v3.nuxtjs.org/guide/concepts/rendering/).
+<h4 id="vite">Vite</h4>
+The vite property is used to configure vite, which is the build tool used by Nuxt 3. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. Your build tool consists of your dev server, which lets you run your app locally on your machine. It also consists of your build process, which is used to build your app for production. Vite is used for both of these things.
+
+You can learn more about Vite [here](https://vitejs.dev/guide/).
+<h4 id="runtimeconfig">Runtime config</h4>
 The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
-You can read more about runtime config [here](https://nuxt.com/docs/api/composables/use-runtime-config).
-<h6 id="modules">- Modules</h6>
+
+You can read more about Runtime config [here](https://nuxt.com/docs/api/composables/use-runtime-config).
+<h4 id="modules">Modules</h4>
 The modules property is used to configure nuxt modules.
-https://v3.nuxtjs.org/docs/directory-structure/modules
+
+You can find an extensive list of nuxt modules that let you expand on your app [here](https://nuxt.com/modules).
 
 ---
 
@@ -275,7 +284,7 @@ Add the following to the **module array of nuxt.config.ts**:
 
 ```
 
-Add the following to **nuxt.config.ts**:
+Add the following property to **nuxt.config.ts**:
 
 ```tsx
 imports: {
@@ -304,7 +313,7 @@ This documentation mentions a basic middleware file, api request and server plug
 
 You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
 
-/server/api/test.post.ts
+### /server/api/test.post.ts
 
 ```tsx
 export default defineEventHandler((event) => {
@@ -331,7 +340,7 @@ Note that reading of the request body is called asynchronously, so you need to u
 export default defineEventHandler(async (event) => {})
 ```
 
-/server/middleware/middleware.ts
+### /server/middleware/middleware.ts
 
 ```tsx
 const publicRoutes: string[] = []
@@ -356,7 +365,7 @@ export default defineEventHandler((event) => {
 
 To protect the backend application, you want to add a basic middleware layer. Nuxt 3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. It checks if the request is a public route, and if not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
 
-/server/plugins/server.ts
+### /server/plugins/server.ts
 
 ```tsx
 export default defineNitroPlugin((nitroApp) => {
@@ -367,7 +376,7 @@ export default defineNitroPlugin((nitroApp) => {
 Plugins are used to extend Nitro's runtime behavior.
 Plugins are auto-registered (filename ordering) and run synchronously on the first nitro initialization. They receive nitroApp context, which can be used to hook into lifecycle events. For example, you can run CRON jobs. However, most hosting providers for Nuxt 3 applications are serverless. So CRON jobs are unreliable, since runtime is limited to the request-response cycle.
 
-<h4 id="nuxt-security">Nuxt Security</h4>
+<h2 id="nuxt-security">Nuxt Security</h2>
 
 Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to worry about security headers, as opposed to have to configure every security header yourself. For example:
 
@@ -376,7 +385,7 @@ Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheet
 - XSS Validator
 - CORS Handler
 
-nuxt/config.ts (add to modules array)
+Add the following to the **module array of nuxt.config.ts**:
 
 ```tsx
 modules: ['nuxt-security']
@@ -391,7 +400,7 @@ You can learn more about Nuxt Security [here](https://nuxt-security.vercel.app/g
 
 <h2 id="scss">SCSS</h2>
 
-<b>If you are planning to use Tailwind CSS, you do not need to use SCSS. If you are planning on using Vuetify, it is recommended you follow this step.</b>
+<b>If you are planning on using Vuetify, it is recommended you follow this step. If you are planning on using Tailwind, you do NOT need to perform this step.</b>
 
 `yarn add sass`
 
@@ -399,7 +408,7 @@ SCSS or SASS is a CSS preprocessor. It allows you to use variables, mixins, func
 
 You can learn more about SCSS [here](https://sass-lang.com/documentation/).
 
-/assets/css/main.scss
+### /assets/css/main.scss
 
 ```scss
 html,
@@ -409,13 +418,13 @@ body {
 }
 ```
 
-app.vue (change)
+Add the following to **app.vue**:
 
 ```html
 <style src="@/assets/css/main.scss" lang="scss"></style>
 ```
 
-nuxt.config.ts (add css property array)
+Add the following property to **nuxt.config.ts**:
 
 ```tsx
 css: ["~/assets/css/main.scss"],
@@ -433,7 +442,7 @@ This will make sure the css is only applied to that component.
 
 <h2 id="vuetify">Vuetify</h2>
 
-<b>If you are planning to use Vuetify, It is required to follow the <a href="#scss">SCSS</a> step first. You do not want to use Tailwind in combination.</b>
+<b>If you are planning to use Vuetify, It is recommended to follow the <a href="#scss">SCSS</a> step first. It is recommended NOT to use Tailwind in combination.</b>
 
 `yarn add vuetify@next @mdi/font`
 
@@ -458,7 +467,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-app.vue (change)
+Change the following in **app.vue**:
 
 ```html
 <template>
@@ -472,13 +481,13 @@ app.vue (change)
 </template>
 ```
 
-nuxt.config.ts (add to css property array)
+Add the following to the **css array of nuxt.config.ts**:
 
 ```tsx
 'vuetify/lib/styles/main.sass', '@mdi/font/css/materialdesignicons.min.css'
 ```
 
-nuxt.config.ts (add build property object)
+Add the following property to **nuxt.config.ts**:
 
 ```tsx
 build: {
@@ -496,13 +505,13 @@ Tailwind CSS is a utility-first CSS framework. It is a very popular CSS framewor
 
 You can learn more about Tailwind CSS [here](https://tailwindcss.com/docs).
 
-nuxt.config.ts (add to modules array)
+Add the following to the **modules array of nuxt.config.ts**:
 
 ```tsx
 '@nuxtjs/tailwindcss'
 ```
 
-nuxt.config.ts (add tailwindcss property object)
+Add the following property to **nuxt.config.ts**:
 
 ```tsx
 tailwindcss: {
@@ -517,7 +526,8 @@ tailwindcss: {
 Run the following command in terminal:
 `npx tailwindcss init`
 
-tailwind.config.js
+### tailwind.config.js
+
 ```jsx
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -533,6 +543,7 @@ module.exports = {
   plugins: [require('prettier-plugin-tailwindcss')],
 }
 ```
+
 This configures Tailwind CSS to use the tailwind.css file, and to use the tailwind.config.js file. It also adds the prettier-plugin-tailwindcss plugin, which allows you to format your tailwind css with prettier and standardize your class order.
 
 ---
