@@ -17,7 +17,8 @@ Base included in this starter:
 
 Frontend Additions:
 
-- <a href="#vuetify">Vuetify - Design Framework with SCSS</a>
+- <a href="#scss">SCSS - CSS Preprocessor</a>
+- <a href="#vuetify">Vuetify - Material Design Component Framework</a>
 - <a href="#tailwind">Tailwind - CSS Utility Classes</a>
 
 ---
@@ -84,6 +85,7 @@ API_KEY=""
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
 ###.tsconfig.json
+
 ```json
 {
   "extends": "./.nuxt/tsconfig.json",
@@ -165,20 +167,15 @@ Do you have the prettier extension installed in your editor? Prettier will autom
 </template>
 
 <script setup lang="ts">
-useHead({
-  title: 'Nuxt app',
-  meta: [{ name: 'Nuxt app', content: 'Nuxt app' }],
-  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-  bodyAttrs: {
-    class: 'body',
-  },
-})
+  useHead({
+    title: 'Nuxt app',
+    meta: [{ name: 'Nuxt app', content: 'Nuxt app' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    bodyAttrs: {
+      class: 'body',
+    },
+  })
 </script>
-
-<style lang="scss"></style>
-</script>
-
-<style lang="scss"></style>
 ```
 
 app.vue is the root component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. If you want to use a custom layout, you can use the NuxtLayout component instead. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
@@ -199,8 +196,6 @@ You can read more about the composition API [here](https://v3.vuejs.org/guide/co
 </template>
 
 <script setup lang="ts"></script>
-
-<style scoped lang="scss"></style>
 ```
 
 This is the index.vue page, which is rendered at the base route of your app (localhost:3000/).
@@ -228,18 +223,18 @@ export default defineNuxtConfig({
 
 This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
 
-  <h6 id="ssr">- SSR</h6>
-  The ssr property is used to enable or disable server side rendering.
-  https://v3.nuxtjs.org/guide/concepts/rendering/
-  <h6 id="vite">- Vite</h6>
-  The vite property is used to configure vite, which is the build tool used by Nuxt 3.
-  https://vitejs.dev/guide/why.html
-  <h6 id="runtimeconfig">- Runtime config</h6>
-  The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
-  https://nuxt.com/docs/api/composables/use-runtime-config
-  <h6 id="modules">- Modules</h6>
+<h6 id="ssr">- SSR</h6>
+The ssr property is used to enable or disable server side rendering.
+https://v3.nuxtjs.org/guide/concepts/rendering/
+<h6 id="vite">- Vite</h6>
+The vite property is used to configure vite, which is the build tool used by Nuxt 3.
+https://vitejs.dev/guide/why.html
+<h6 id="runtimeconfig">- Runtime config</h6>
+The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
+You can read more about runtime config [here](https://nuxt.com/docs/api/composables/use-runtime-config).
+<h6 id="modules">- Modules</h6>
 The modules property is used to configure nuxt modules.
-  https://v3.nuxtjs.org/docs/directory-structure/modules
+https://v3.nuxtjs.org/docs/directory-structure/modules
 
 ---
 
@@ -388,16 +383,65 @@ modules: ['nuxt-security']
 ```
 
 It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading. You can configure the headers in nuxt.config/ts in a
-`security: {}` section.
+`security: {}` object.
+
 You can learn more about Nuxt Security [here](https://nuxt-security.vercel.app/getting-started/setup).
 
 ---
 
-<h2 id="vuetify">Vuetify with SCSS</h2>
+<h2 id="scss">SCSS</h2>
 
-`yarn add vuetify@next @mdi/font sass`
+<b>If you are planning to use Tailwind CSS, you do not need to use SCSS. If you are planning on using Vuetify, it is recommended you follow this step.</b>
 
-### plugins/vuetify.ts
+`yarn add sass`
+
+SCSS or SASS is a CSS preprocessor. It allows you to use variables, mixins, functions and more to write more efficient CSS. It also allows you to write CSS in a more structured way, which makes it easier to maintain. All SCSS files are suffixed with .scss.
+
+You can learn more about SCSS [here](https://sass-lang.com/documentation/).
+
+/assets/css/main.scss
+
+```scss
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+```
+
+app.vue (change)
+
+```html
+<style src="@/assets/css/main.scss" lang="scss"></style>
+```
+
+nuxt.config.ts (add css property array)
+
+```tsx
+css: ["~/assets/css/main.scss"],
+```
+
+These last two steps are required to make sure the main.scss file is compiled and included in the application. This way you can write your general app css in the main.scss file. Alternatively, you can also write your css in the app.vue file or other component files. If you want to write css in a component file, you can use this style tag:
+
+```html
+<style scoped lang="scss"></style>
+```
+This will make sure the css is only applied to that component.
+
+---
+
+<h2 id="vuetify">Vuetify</h2>
+
+<b>If you are planning to use Vuetify, It is required to follow the <a href="#scss">SCSS</a> step first. You do not want to use Tailwind in combination.</b> 
+
+
+`yarn add vuetify@next @mdi/font`
+
+Vuetify is a Material Design component framework for Vue.js. It is a very popular component library, and is used by many Nuxt 3 applications. It is recommended you use Vuetify if you are planning on using Material Design components. The @mdi/font package is required for the Material Design icons, these are used by default in Vuetify.
+
+You can learn more about Vuetify [here](https://vuetifyjs.com/en/getting-started/installation/).
+
+/plugins/vuetify.ts
 
 ```jsx
 import { createVuetify } from 'vuetify'
@@ -414,23 +458,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-### /assets/css/main.scss
-
-```scss
-html,
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-  }
-}
-```
-
-### app.vue (change)
+app.vue (change)
 
 ```html
 <template>
@@ -442,19 +470,15 @@ body {
     </v-app>
   </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<style src="@/assets/css/main.scss" lang="scss"></style>
 ```
 
-Add the following to **nuxt.config.ts**:
+nuxt.config.ts (add to css array and add build property object)
 
 ```tsx
 build: {
     transpile: ["vuetify"],
 },
-css: ["~/assets/css/main.scss", "vuetify/lib/styles/main.sass", "@mdi/font/css/materialdesignicons.min.css"],
+css: ["vuetify/lib/styles/main.sass", "@mdi/font/css/materialdesignicons.min.css"],
 ```
 
 ---
