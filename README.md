@@ -495,9 +495,9 @@ Change the following in **app.vue**:
 <template>
   <div id="app">
     <v-app>
-      <v-main
-         <NuxtPage />
-      </v-main
+      <v-main>
+        <NuxtPage />
+      </v-main>
     </v-app>
   </div>
 </template>
