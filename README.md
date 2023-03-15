@@ -162,6 +162,25 @@ module.exports = {
 Do you have the prettier extension installed in your editor? Prettier will automatically format your code when you save, using the config you made in .prettierrc.js.
 
 You can learn more about Prettier [here](https://prettier.io/docs/en/index.html).
+
+### .gitignore
+
+```jsx
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist
+.DS_Store
+```
+
+This file is used to tell git which files to ignore. You can add files to this list as you see fit. This config is the default config for Nuxt 3, with .DS_Store files added.
+
+You can learn more about git and .gitignore [here](https://git-scm.com/docs).
+
 ###app.vue
 
 ```html
@@ -229,17 +248,20 @@ export default defineNuxtConfig({
 This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function. It
 
 <h4 id="ssr">SSR</h4>
-The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser. 
+The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser.
 
 You can learn more about rendering concepts [here](https://v3.nuxtjs.org/guide/concepts/rendering/).
+
 <h4 id="vite">Vite</h4>
 The vite property is used to configure vite, which is the build tool used by Nuxt 3. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. Your build tool consists of your dev server, which lets you run your app locally on your machine. It also consists of your build process, which is used to build your app for production. Vite is used for both of these things.
 
 You can learn more about Vite [here](https://vitejs.dev/guide/).
+
 <h4 id="runtimeconfig">Runtime config</h4>
 The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
 
 You can read more about Runtime config [here](https://nuxt.com/docs/api/composables/use-runtime-config).
+
 <h4 id="modules">Modules</h4>
 The modules property is used to configure nuxt modules.
 
