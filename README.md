@@ -65,9 +65,9 @@ Open Terminal
   3. **store**: contains your Pinia store. Pinia is used for state management, that lets you transfer data between components without using props or events
      **Other directories:**
   4. **[components](https://nuxt.com/docs/guide/directory-structure/components)**: contains your Vue.js Components.
-  5. **[plugins](https://nuxt.com/docs/guide/directory-structure/plugins)**: contains your plugins, which are JavaScript packages that you can add to your application at runtime. 
+  5. **[plugins](https://nuxt.com/docs/guide/directory-structure/plugins)**: contains your plugins, which are JavaScript packages that you can add to your application at runtime.
   6. **[composables](https://nuxt.com/docs/guide/directory-structure/composables)**: contains composables, which are functions that can be used in multiple components. Composables can be recognized by the use prefix.
-  7. **[utils](https://nuxt.com/docs/guide/directory-structure/utils)**: contains utility functions that can be used in multiple places. Similar to composables 
+  7. **[utils](https://nuxt.com/docs/guide/directory-structure/utils)**: contains utility functions that can be used in multiple places. Similar to composables
   8. **[layouts](https://nuxt.com/docs/guide/directory-structure/layouts)**: contains customizable layouts used to create complex UIs.
   9. **[assets](https://nuxt.com/docs/guide/directory-structure/assets)**: contains your un-compiled assets such as css files, images, or fonts.
   10. **[public](https://nuxt.com/docs/guide/directory-structure/public)**: directory is directly served at the server root and contains public files that have to keep their names
@@ -589,6 +589,28 @@ Prisma is an ORM, which is a layer that maps your database structure to the prog
 
 You can learn more about Prisma [here](https://www.prisma.io/docs).
 
+`npx prisma init`
+
+### /prisma/schema.prisma
+
+```tsx
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+provider = "prisma-client-js"
+}
+
+datasource db {
+provider = "postgresql"
+url      = env("DATABASE_URL")
+}
+```
+
+This command generates this schema.prisma file in the prisma folder. This file is used to configure your database connection and to generate your database models. Also, a DATABASE_URL variable is created in **.env**. You need to overwrite this variable with the correctly formatted database url, which looks a lot like a connection string. In the schema file, **you also need to change the provider to the correct database provider**.
+
+You can find the correct format and database providers [here](https://www.prisma.io/docs/reference/database-reference/connection-urls).
+
 ### /prisma/client.ts
 
 ```tsx
@@ -598,13 +620,7 @@ const prisma = new PrismaClient()
 export default prisma
 ```
 
-`npx prisma init`
-
-This command generates a schema.prisma file in the prisma folder. This file is used to configure your database connection and to generate your database models. Also, a DATABASE_URL variable is created in **.env**. You need to overwrite this variable with the correctly formatted database url, which looks a lot like a connection string.
-
-You can find the correct format [here](https://www.prisma.io/docs/reference/database-reference/connection-urls).
-
-After that, to start importing and using your database model, you can run the following commands in terminal.
+Afterwards, to start importing and using your database model, you can run the following commands in terminal.
 
 - `npx prisma db pull`
 - `npx prisma generate`
