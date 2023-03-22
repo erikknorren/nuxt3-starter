@@ -563,6 +563,16 @@ tailwindcss: {
 Run the following command in terminal:
 `npx tailwindcss init`
 
+### /assets/css/tailwind.css
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+This file is required to make sure Tailwind CSS is included in the application.
+
 ### tailwind.config.js
 
 ```jsx
