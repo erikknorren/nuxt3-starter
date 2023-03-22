@@ -158,6 +158,7 @@ change package.json `"scripts"` object to the following by adding a `lint` scrip
 Now you can run the following commands in terminal to lint, and subsequently fix your code (that can be fixed automatically). Your linting will be using the config you made in .eslintrc.js. This config is fairly opinitinated, but you can change it to your liking by changing your config.
 
 `yarn lint`
+
 `yarn lint --fix`
 
 You can learn more about how to configure ESLint [here](https://eslint.org/docs/latest/use/configure/).
