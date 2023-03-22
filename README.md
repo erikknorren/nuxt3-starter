@@ -599,6 +599,7 @@ This configures Tailwind CSS to use the tailwind.css file, and to use the tailwi
 <h2 id="prisma">Prisma</h2>
 
 `yarn add --dev prisma`
+
 `yarn add @prisma/client`
 
 Prisma is an ORM, which is a layer that maps your database structure to the programming language you are using in your application. It allows you to bridge the gap between the backend part of your Nuxt 3 application and your database. It allows for easy to use database queries using Typescript, which allows you to achieve typesafety across your whole technology stack. It also prevents you from having to write SQL queries in a non SQL environment/language which is prone to errors.
