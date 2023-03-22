@@ -2,7 +2,7 @@
 
 # Nuxt 3 Starter
 
-Nuxt 3 Starter Guide explaining how this repository is generated and why aspects are used.
+Nuxt 3 Starter Guide that explains how this repository is generated and why aspects are used.
 
 Nuxt 3 is a meta framework build on top of Vue.js, Vite, Nitro, and Typescript. It is a framework for building modern web applications. Nuxt provides both frontend and backend functionality so you can focus your attention to a single project. The interconnectivity between frontend and backend can be powered up by Typescript which makes it easier to develop, build, and debug. You can even extend this connectivity to your database with Prisma.
 
@@ -55,16 +55,17 @@ Helpful Visual Studio Code extensions:
 Open Terminal
 
 - `npx nuxi init nuxt-app`
-  Rename your folder however you want it, in this case its erik-nuxt3-starter
-- `cd erik-nuxt3-starter`
+  Rename your folder however you want it, in this case its nuxt3-starter
+- `cd nuxt3-starter`
 - `mkdir pages server store`
   These directories have different purposes:
 
   1. **pages**: contains your application views and routes. Nuxt 3 will read all the .vue files inside this directory and set them up as application routes using the file name as the path.
   2. **server**: contains the server side of your app, which is the backend of your application.
   3. **store**: contains your Pinia store. Pinia is used for state management, that lets you transfer data between components without using props or events
-     
+
      **Other directories:**
+
   4. **[components](https://nuxt.com/docs/guide/directory-structure/components)**: contains your Vue.js Components.
   5. **[plugins](https://nuxt.com/docs/guide/directory-structure/plugins)**: contains your plugins, which are JavaScript packages that you can add to your application at runtime.
   6. **[composables](https://nuxt.com/docs/guide/directory-structure/composables)**: contains composables, which are functions that can be used in multiple components. Composables can be recognized by the use prefix.
@@ -72,18 +73,18 @@ Open Terminal
   8. **[layouts](https://nuxt.com/docs/guide/directory-structure/layouts)**: contains customizable layouts used to create complex UIs.
   9. **[assets](https://nuxt.com/docs/guide/directory-structure/assets)**: contains your un-compiled assets such as css files, images, or fonts.
   10. **[public](https://nuxt.com/docs/guide/directory-structure/public)**: directory is directly served at the server root and contains public files that have to keep their names
-  11. **[middleware](https://nuxt.com/docs/guide/directory-structure/middleware)**: contains customizable route middleware that you can use throughout your frontend. These can be used for your auth provider for example. Do not confuse with the server/middleware directory, that is used to protect your api routes.
-  12. **[content](https://nuxt.com/docs/guide/directory-structure/content)**: contains your content files, such as markdown files. Used to create a file based CMS.
+  11. **[middleware](https://nuxt.com/docs/guide/directory-structure/middleware)**: contains customizable route middleware that you can use throughout your frontend. This can be used for your auth provider for example. Do not confuse with the /server/middleware directory, that is used to protect your api routes.
+  12. **[content](https://nuxt.com/docs/guide/directory-structure/content)**: contains your content files, such as markdown files. Used to create a file based CMS. Requires installation of the @nuxt/content module.
   13. **types**: contains your typescript types. If you define your types in a **.d.ts** file. You can use your types across the application.
 
 - `yarn add vue`
   The next step is to add boilerplate dependencies:
-  1. **Vue** is the frontend framework used for this app, most of vue's features are already included in Nuxt 3.
+  1. **Vue** is the frontend framework used for this app, most of the vue features are already included in Nuxt 3.
 - `yarn add --dev typescript eslint prettier @types/node   eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
   This step is installing dev dependencies:
   1. **Typescript**: we want to use strict Typescript because it leads to smoother developing, building and debugging. It also helps with code completion and documentation.
   2. **ESLint**: we want to use ESLint to enforce certain code styles and rules, such as no unused variables.
-  3. **Prettier**: we want to use Prettier to enforce certain code formatting, such as no semicolons.
+  3. **Prettier**: we want to use Prettier to enforce certain code formatting, such as no semicolons or print width.
 
 The next steps are configuring your project by adding or editing certain files in the root directory.
 
@@ -141,7 +142,7 @@ module.exports = {
 }
 ```
 
-change package.json `scripts` object to the following by adding a `lint` script command:
+change package.json `"scripts"` object to the following by adding a `lint` script command:
 
 ```jsx
 "scripts": {
@@ -219,9 +220,9 @@ You can learn more about git and .gitignore [here](https://git-scm.com/docs).
 
 app.vue is the root component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
 
-Do note the setup property in the script tag, this is used to write our Vue 3 code in the composition API style. This style is modular and is closer to vanilla Javascript than the options API style.
+Do note the setup property in the script tag, this is used to write our Vue 3 code in the Composition API style. This style is modular and is closer to vanilla Javascript than the Options API style.
 
-You can read more about the composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
+You can read more about the Composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
 
 ### pages/index.vue
 
@@ -258,7 +259,7 @@ export default defineNuxtConfig({
 })
 ```
 
-This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function. It
+This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
 
 <h4 id="ssr">SSR</h4>
 The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser.
@@ -341,7 +342,7 @@ const store = useStore()
 
 `yarn add h3 nuxt-security`
 
-Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. Nitro uses the unjs/h3 http library built for high performance and portability.
+Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. A server engine is different from a seperate backend application. Because Nitro also serves the server-side rendered website. Nitro uses the unjs/h3 http library for API endpoints and middleware, which is built for high performance and portability.
 
 You can learn more about server directory/Nitro [here](https://nuxt.com/docs/guide/directory-structure/server).
 This documentation mentions a basic middleware file, api request and server plugin. Everything you need to run your backend application.
@@ -602,12 +603,12 @@ You can learn more about Prisma [here](https://www.prisma.io/docs).
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-provider = "postgresql"
-url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 ```
 
