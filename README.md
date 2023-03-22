@@ -63,6 +63,7 @@ Open Terminal
   1. **pages**: contains your application views and routes. Nuxt 3 will read all the .vue files inside this directory and set them up as application routes using the file name as the path.
   2. **server**: contains the server side of your app, which is the backend of your application.
   3. **store**: contains your Pinia store. Pinia is used for state management, that lets you transfer data between components without using props or events
+     
      **Other directories:**
   4. **[components](https://nuxt.com/docs/guide/directory-structure/components)**: contains your Vue.js Components.
   5. **[plugins](https://nuxt.com/docs/guide/directory-structure/plugins)**: contains your plugins, which are JavaScript packages that you can add to your application at runtime.
