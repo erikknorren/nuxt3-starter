@@ -235,7 +235,7 @@ You can read more about the composition API [here](https://v3.vuejs.org/guide/co
 <script setup lang="ts"></script>
 ```
 
-This is the index.vue page, which is rendered at the base route of your app (localhost:3000/).
+This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000/).
 
 You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
 
