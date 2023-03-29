@@ -309,7 +309,7 @@ You can read more about Pinia [here](https://pinia.esm.dev/).
 
 The variable declared is env, which is retrieved from the public runtime config. This variable serves as an example on how to declare pinia state variables, and can be used across the whole app to access an environment variable that we want to expose to the client. For example, if we want to use a different API url in development than in production.
 
-Add the following to the **module array of nuxt.config.ts**:
+Add the following to the **modules array of nuxt.config.ts**:
 
 ```tsx
 '@pinia/nuxt'
@@ -420,10 +420,10 @@ Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheet
 - XSS Validator
 - CORS Handler
 
-Add the following to the **module array of nuxt.config.ts**:
+Add the following to the **modules array of nuxt.config.ts**:
 
 ```tsx
-modules: ['nuxt-security']
+'nuxt-security'
 ```
 
 It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading. You can configure the headers in nuxt.config/ts in a
