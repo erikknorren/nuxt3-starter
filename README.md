@@ -312,20 +312,17 @@ The variable declared is env, which is retrieved from the public runtime config.
 Add the following to the **module array of nuxt.config.ts**:
 
 ```tsx
-[
-    "@pinia/nuxt",
-    {
-        autoImports: ["defineStore", "acceptHMRUpdate"],
-    },
-],
-
+'@pinia/nuxt'
 ```
 
-Add the following property to **nuxt.config.ts**:
+Add the following properties to **nuxt.config.ts**:
 
 ```tsx
 imports: {
     dirs: ["store"],
+},
+pinia: {
+    autoImports: ['defineStore', 'acceptHMRUpdate'],
 },
 ```
 
