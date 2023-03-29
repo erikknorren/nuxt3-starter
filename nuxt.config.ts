@@ -10,15 +10,11 @@ export default defineNuxtConfig({
       env: process.env.NODE_ENV,
     },
   },
-  modules: [
-    [
-      '@pinia/nuxt',
-      {
-        autoImports: ['defineStore', 'acceptHMRUpdate'],
-      },
-    ],
-  ],
+  modules: ['@pinia/nuxt'],
   imports: {
     dirs: ['store'],
+  },
+  pinia: {
+    autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
 })
