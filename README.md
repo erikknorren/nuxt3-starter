@@ -169,7 +169,7 @@ You can learn more about how to configure ESLint [here](https://eslint.org/docs/
 module.exports = {
   semi: false,
   singleQuote: true,
-  printWidth: 120,
+  printWidth: 160,
   tabWidth: 2,
   bracketSameLine: true,
   htmlWhitespaceSensitivity: 'ignore',
