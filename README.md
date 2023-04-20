@@ -349,31 +349,32 @@ You can find the documentation for h3 functions [here](https://www.jsdocs.io/pac
 
 ### /server/api/test.post.ts
 
+Similar to the pages system, you can create api endpoints by creating files in the /server/api directory. The file name is the endpoint name, and the file extension is the request method. The file should export a default function that returns an object. This object will be returned as a json response by default.
+
+To access dynamic route parameters, query parameters, hearders and body you can use the event context.
+
+Note that reading of the request body is called asynchronously, so you need to use the await keyword. Make sure to include the async keyword before the arrow function definition.
+
 ```tsx
-export default defineEventHandler((event) => {
-  return {
-    url: event.node.req.url,
-    method: event.node.req.method,
+export default defineEventHandler(async (event) => {
+  try {
+    return {
+      statusCode: 200,
+      statusMessage: 'OK',
+      url: event.node.req.url,
+      method: event.node.req.method,
+      query: getQuery(event),
+      headers: getRequestHeaders(event),
+      body: await readBody(event),
+    }
+  } catch (error) {
+    console.log(error)
+    return sendError(event, createError({ statusCode: 500, statusMessage: 'Internal Server Error' }))
   }
 })
 ```
 
-Similar to the pages system, you can create api endpoints by creating files in the /server/api directory. The file name is the endpoint name, and the file extension is the request method. The file should export a default function that returns an object. This object will be returned as a json response.
-
-To access dynamic route parameters, query parameters, hearders and body you can use the event context.
-
-```tsx
-const params = event.context.params
-const query = getQuery(event)
-const headers = getRequestHeaders(event)
-const body = await readBody(event)
-```
-
-Note that reading of the request body is called asynchronously, so you need to use the await keyword. Make sure to include the async keyword before the arrow function definition like so:
-
-```tsx
-export default defineEventHandler(async (event) => {})
-```
+This example is pretty verbose, but demonstrates how to use the event context by returning it's properties directly to the user. The try/catch block is used to catch any errors that might occur while reading the request body. This serves as a foundational example on how to handle errors in Nitro. This endpoint can be used to test if the backend application is working, for monitoring purposes.
 
 ### /server/middleware/middleware.ts
 
