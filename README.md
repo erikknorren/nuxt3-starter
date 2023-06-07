@@ -577,20 +577,20 @@ This file is required to make sure Tailwind CSS is included in the application.
 ```jsx
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
-    './app.vue',
-  ],
+  content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}', './app.vue'],
   theme: {},
-  plugins: [require('prettier-plugin-tailwindcss')],
 }
 ```
 
 This configures Tailwind CSS to use the tailwind.css file, and to use the tailwind.config.js file. It also adds the prettier-plugin-tailwindcss plugin, which allows you to format your tailwind css with prettier and standardize your class order.
+
+Add the following array to **.prettierrc.js**:
+
+```jsx
+plugins: ['prettier-plugin-tailwindcss']
+```
+
+This prettier plugin orders your tailwind classes in a standardized way. This is helpful when working in a team, it also makes it easier to find classes in your code
 
 ---
 
