@@ -338,8 +338,6 @@ const store = useStore()
 
 <h2 id="nitro">Nitro</h2>
 
-`yarn add h3 nuxt-security`
-
 Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. A server engine is different from a seperate backend application. Because Nitro also serves the server-side rendered website. Nitro uses the unjs/h3 http library for API endpoints and middleware, which is built for high performance and portability.
 
 You can learn more about server directory/Nitro [here](https://nuxt.com/docs/guide/directory-structure/server).
@@ -413,6 +411,8 @@ Plugins are used to extend Nitro's runtime behavior.
 Plugins are auto-registered (filename ordering) and run synchronously on the first nitro initialization. They receive nitroApp context, which can be used to hook into lifecycle events. For example, you can run CRON jobs. However, most hosting providers for Nuxt 3 applications are serverless. So CRON jobs are unreliable, since runtime is limited to the request-response cycle.
 
 <h2 id="nuxt-security">Nuxt Security</h2>
+
+`yarn add h3 nuxt-security`
 
 Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to worry about security headers, as opposed to have to configure every security header yourself. For example:
 
