@@ -95,6 +95,7 @@ Your.env file is used to store environment variables. These variables can be acc
 ```
 # General backend
 NODE_ENV="development"
+BASE_URL="http://localhost:3000"
 API_KEY=""
 ```
 
@@ -254,6 +255,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       env: process.env.NODE_ENV,
+      url: process.env.BASE_URL,
     },
   },
   modules: [],
