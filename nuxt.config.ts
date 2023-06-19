@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       env: process.env.NODE_ENV,
+      url: process.env.BASE_URL,
     },
   },
   modules: ['@pinia/nuxt', 'nuxt-security'],
