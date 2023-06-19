@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       env: process.env.NODE_ENV,
     },
   },
-  modules: ['@pinia/nuxt'],
+  modules: ['@pinia/nuxt', 'nuxt-security'],
   imports: {
     dirs: ['store'],
   },
