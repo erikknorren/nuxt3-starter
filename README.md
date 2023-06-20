@@ -213,9 +213,7 @@ You can learn more about git and .gitignore [here](https://git-scm.com/docs).
     title: 'Nuxt app',
     meta: [{ hid: 'description', name: 'description', content: 'Nuxt app' }],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    bodyAttrs: {
-      class: 'body',
-    },
+    htmlAttrs: { lang: 'en' },
   })
 </script>
 ```
