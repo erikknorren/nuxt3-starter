@@ -211,7 +211,7 @@ You can learn more about git and .gitignore [here](https://git-scm.com/docs).
 <script setup lang="ts">
   useHead({
     title: 'Nuxt app',
-    meta: [{ name: 'Nuxt app', content: 'Nuxt app' }],
+    meta: [{ hid: 'description', name: 'description', content: 'Nuxt app' }],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     bodyAttrs: {
       class: 'body',
