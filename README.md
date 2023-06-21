@@ -378,7 +378,7 @@ This example is pretty verbose, but demonstrates how to use the event context by
 ### /server/middleware/middleware.ts
 
 ```tsx
-const publicRoutes: string[] = []
+const publicRoutes: string[] = ['/api/test']
 
 export default defineEventHandler((event) => {
   console.log('New request: ' + event.path)
