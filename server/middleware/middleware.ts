@@ -1,11 +1,11 @@
-const publicRoutes: string[] = []
+const publicRoutes: string[] = ['/api/test']
 
 export default defineEventHandler((event) => {
   console.log('New request: ' + event.path)
   const headers = getRequestHeaders(event)
   // API Middleware
   if (event.path?.startsWith('/api/')) {
-    if (publicRoutes.includes(event.path)) {
+    if (publicRoutes.some((route) => event.path?.startsWith(route))) {
       console.log('Public route, no authorization required')
       return eventHandler((event) => ({ url: event.path }))
     }
