@@ -385,7 +385,7 @@ export default defineEventHandler((event) => {
   const headers = getRequestHeaders(event)
   // API Middleware
   if (event.path?.startsWith('/api/')) {
-    if (publicRoutes.includes(event.path)) {
+    if (publicRoutes.some((route) => event.path?.startsWith(route))) {
       console.log('Public route, no authorization required')
       return eventHandler((event) => ({ url: event.path }))
     }
@@ -398,7 +398,7 @@ export default defineEventHandler((event) => {
 })
 ```
 
-To protect the backend application, you want to add a basic middleware layer. Nuxt 3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. It checks if the request is a public route, and if not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
+To protect the backend application, you want to add a basic middleware layer. Nuxt 3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. The code checks if the request path starts with a route listed in the publicRoutes array. If not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
 
 ### /server/plugins/server.ts
 
