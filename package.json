@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "nuxt-security": "^0.13.0",
+    "nuxt-security": "^0.13.1",
     "vue": "^3.3.4"
   }
 }
