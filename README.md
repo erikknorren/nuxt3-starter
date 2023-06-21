@@ -340,7 +340,8 @@ const store = useStore()
 
 Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. A server engine is different from a seperate backend application. Because Nitro also serves the server-side rendered website. Nitro uses the unjs/h3 http library for API endpoints and middleware, which is built for high performance and portability.
 
-You can learn more about server directory/Nitro [here](https://nuxt.com/docs/guide/directory-structure/server).
+You can learn more about server directory [here](https://nuxt.com/docs/guide/directory-structure/server).
+You can learn more about Nitro [here](https://nitro.unjs.io/).
 This documentation mentions a basic middleware file, api request and server plugin. Everything you need to run your backend application.
 
 You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
@@ -402,8 +403,9 @@ To protect the backend application, you want to add a basic middleware layer. Nu
 ### /server/plugins/server.ts
 
 ```tsx
-export default defineNitroPlugin((nitroApp) => {
-  console.log('Starting Nitro server with h3 options:', nitroApp.h3App.options)
+export default defineNitroPlugin(async (nitroApp) => {
+  console.log('Starting Nitro server:', (await $fetch('/api/test', { method: 'POST' })).statusCode === 200 ? 'responding' : 'not responding')
+  return nitroApp
 })
 ```
 
@@ -412,14 +414,13 @@ Plugins are auto-registered (filename ordering) and run synchronously on the fir
 
 <h2 id="nuxt-security">Nuxt Security</h2>
 
-`yarn add h3 nuxt-security`
+`yarn add nuxt-security`
 
-Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to worry about security headers, as opposed to have to configure every security header yourself. For example:
+Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to configure security headers. The module also ships with additional security features by default, for example:
 
-- Request rate limiting
-- Request size limiting
-- XSS Validator
-- CORS Handler
+- Request size limiting: default size limit set to 2mb request and 8mb file upload.
+- Request rate limiting: default rate limit set to 150 requests per hour.
+- CORS Handler: default origin set to \*.
 
 Add the following to the **modules array of nuxt.config.ts**:
 
@@ -427,10 +428,10 @@ Add the following to the **modules array of nuxt.config.ts**:
 'nuxt-security'
 ```
 
-It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading. You can configure the headers in nuxt.config/ts in a
+It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading. You can configure the headers in nuxt.config.ts in the
 `security: {}` object.
 
-You can learn more about Nuxt Security [here](https://nuxt-security.vercel.app/getting-started/setup).
+You can learn more about Nuxt Security configuration [here](https://nuxt-security.vercel.app/getting-started/configuration).
 
 ---
 
