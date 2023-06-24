@@ -228,7 +228,7 @@ You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 }
 ```
 
-This file is used to configure Typescript. It extends the Nuxt 3 Typescript config, and adds the Pinia types.
+This file is used to configure Typescript. It extends the Nuxt 3 Typescript config, and adds the Pinia types. There is also a seperate Typescript config for the server, which is located in the server folder.
 
 You can learn more about Typescript [here](https://www.typescriptlang.org/docs/handbook/intro.html).
 
@@ -452,7 +452,6 @@ export default defineNitroPlugin(async (nitroApp) => {
   console.log('testResponse:', testResponse.statusCode, testResponse.statusMessage)
   return nitroApp
 })
-
 ```
 
 Plugins are used to extend Nitro's runtime behavior.
