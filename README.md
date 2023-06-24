@@ -121,8 +121,12 @@ These core configurations are usually used in a seperate config file. Nuxt 3 all
 <h5 id="vite">Vite</h5>
 The vite property is used to configure vite, which is the build tool used by Nuxt 3. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. Your build tool consists of your dev server, which lets you run your app locally on your machine. It also consists of your build process, which is used to build your app for production. Vite is used for both of these things.
 
+You can learn more about Vite [here](https://vitejs.dev/guide/).
+
 <h5 id="vue">Vue</h5>
-The vue property is used to configure vue, which is the frontend javascript framework used by Nuxt 3.
+The vue property is used to configure vue, which is the frontend javascript framework used by Nuxt 3. Vue is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex. Vue uses two types of syntax: the Options API and the Composition API. The Options API is the default syntax used by Vue. The composition API is a
+
+You can learn more about Vue [here](https://vuejs.org/guide/introduction.html).
 
 <h5 id="nitro-config">Nitro</h5>
 The nitro property is used to configure Nitro, which is the server engine used by Nuxt 3. Read more in the <a href="#nitro">Nitro</a> section.
@@ -133,8 +137,6 @@ The nitro property is used to configure Nitro, which is the server engine used b
 The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser.
 
 You can learn more about rendering concepts [here](https://v3.nuxtjs.org/guide/concepts/rendering/).
-
-You can learn more about Vite [here](https://vitejs.dev/guide/).
 
 <h5 id="runtimeconfig">Runtime config</h5>
 The runtimeConfig property is used to configure environment variables that we want to expose to the useRuntimeConfig() composable. The variables in the root are exposed to the server, and need to be prefixed by NUXT. The variables in the public object are exposed to client, and need to be prefixed by NUXT_PUBLIC.
@@ -155,6 +157,49 @@ You can read more about the auto import feature [here](https://nuxt.com/docs/gui
 The devtools property is used to configure the module @nuxt/devtools. You can use these devtools by clicking on the Nuxt icon in the bottom of your browser where the app is running.
 
 You can read more about the devtools [here](https://devtools.nuxtjs.org/).
+
+### app.vue
+
+```html
+<template>
+  <div id="app">
+    <NuxtPage />
+  </div>
+</template>
+
+<script setup lang="ts">
+  useHead({
+    title: 'Nuxt app',
+    meta: [{ hid: 'description', name: 'description', content: 'Nuxt app' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    htmlAttrs: { lang: 'en' },
+  })
+</script>
+```
+
+app.vue is the root Vue component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
+
+Do note the setup property in the script tag, this is used to write our Vue 3 code in the Composition API style. This style is modular and is closer to vanilla Javascript than the Options API style.
+
+You can read more about the Composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
+
+### pages/index.vue
+
+```html
+<template>
+  <div class="index">
+    <h1>Index page</h1>
+  </div>
+</template>
+
+<script setup lang="ts"></script>
+```
+
+This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000/).
+
+You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
+
+---
 
 ### .env
 
@@ -283,49 +328,6 @@ This file is used to tell git which files to ignore. You can add files to this l
 
 You can learn more about git and .gitignore [here](https://git-scm.com/docs).
 
-### app.vue
-
-```html
-<template>
-  <div id="app">
-    <NuxtPage />
-  </div>
-</template>
-
-<script setup lang="ts">
-  useHead({
-    title: 'Nuxt app',
-    meta: [{ hid: 'description', name: 'description', content: 'Nuxt app' }],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    htmlAttrs: { lang: 'en' },
-  })
-</script>
-```
-
-app.vue is the root component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
-
-Do note the setup property in the script tag, this is used to write our Vue 3 code in the Composition API style. This style is modular and is closer to vanilla Javascript than the Options API style.
-
-You can read more about the Composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
-
-### pages/index.vue
-
-```html
-<template>
-  <div class="index">
-    <h1>Index page</h1>
-  </div>
-</template>
-
-<script setup lang="ts"></script>
-```
-
-This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000/).
-
-You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
-
----
-
 <h2 id="pinia">Pinia</h2>
 
 `yarn add @pinia/nuxt`
@@ -446,9 +448,12 @@ To protect the backend application, you want to add a basic middleware layer. Nu
 
 ```tsx
 export default defineNitroPlugin(async (nitroApp) => {
-  console.log('Starting Nitro server:', (await $fetch('/api/test', { method: 'POST' })).statusCode === 200 ? 'responding' : 'not responding')
+  console.log('Nitro server starting...')
+  const testResponse = await $fetch('/api/test', { method: 'POST' })
+  console.log('testResponse:', testResponse.statusCode, testResponse.statusMessage)
   return nitroApp
 })
+
 ```
 
 Plugins are used to extend Nitro's runtime behavior.
@@ -470,8 +475,17 @@ Add the following to the **modules array of nuxt.config.ts**:
 'nuxt-security'
 ```
 
-It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading. You can configure the headers in nuxt.config.ts in the
-`security: {}` object.
+It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading, you can configure the headers in nuxt.config.ts in the security property. This object can also be used to configure your rate limit and size limit settings. Disabling the following header will allow you to use the Nuxt Devtools iframe in your application.
+
+Add the following property to **nuxt.config.ts**:
+
+```tsx
+security: {
+  headers: {
+    crossOriginEmbedderPolicy: 'unsafe-none',
+  },
+},
+```
 
 You can learn more about Nuxt Security configuration [here](https://nuxt-security.vercel.app/getting-started/configuration).
 
