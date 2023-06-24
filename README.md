@@ -162,7 +162,7 @@ You can read more about the devtools [here](https://devtools.nuxtjs.org/).
 
 <h3 id="env">.env</h3>
 
-Your.env file is used to store environment variables. These variables can be accessed in your **server side code only** using process.env.ENVIRONMENT_VARIABLE_NAME. This is useful for storing sensitive information such as api keys, or for storing different values for different build environments
+Your.env file is used to store environment variables. These variables can be accessed in your **server side code only** using process.env.ENVIRONMENT_VARIABLE_NAME. This is useful for storing sensitive information such as api keys, or for storing different values for different build environments.
 
 ```
 # General backend
