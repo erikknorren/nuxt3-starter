@@ -167,6 +167,7 @@ Your.env file is used to store environment variables. These variables can be acc
 ```
 # General backend
 NODE_ENV="development"
+PORT="3000"
 
 # Nuxt 3 - Can be exposed to runtime config server side
 NUXT_API_KEY=""
