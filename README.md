@@ -16,6 +16,7 @@ Base included in this starter:
 
 - <a href="#nuxt3">Nuxt 3</a>
 - <a href="#vite">Vite - Build Tool</a>
+- <a href="#vue">Vue - Frontend Framework</a>
 - <a href="#pinia">Pinia - State Management</a>
 - <a href="#nitro">Nitro - Backend</a>
 
@@ -80,13 +81,80 @@ Open Terminal
 - `yarn add vue`
   The next step is to add boilerplate dependencies:
   1. **Vue** is the frontend framework used for this app, most of the vue features are already included in Nuxt 3.
-- `yarn add --dev typescript eslint prettier eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
+- `yarn add --dev eslint prettier eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
   This step is installing dev dependencies:
-  1. **Typescript**: we want to use strict Typescript because it leads to smoother developing, building and debugging. It also helps with code completion and documentation.
+  1. **Typescript**: we want to use strict Typescript because it leads to smoother developing, building and debugging. It also helps with code completion and documentation. Typescript is installed by default
   2. **ESLint**: we want to use ESLint to enforce certain code styles and rules, such as no unused variables.
   3. **Prettier**: we want to use Prettier to enforce certain code formatting, such as no semicolons or print width.
 
 The next steps are configuring your project by adding or editing certain files in the root directory.
+
+### nuxt.config.ts
+
+```jsx
+export default defineNuxtConfig({
+  ssr: true,
+  runtimeConfig: {
+    apiKey: process.env.NUXT_API_KEY,
+    public: {
+      env: process.env.NODE_ENV,
+      url: process.env.NUXT_PUBLIC_URL,
+    },
+  },
+  modules: ['@nuxt/devtools'],
+  imports: {
+    dirs: ['store'],
+  },
+  devtools: {
+    enabled: true,
+  },
+})
+```
+
+This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
+
+You can read more about configurating Nuxt 3 [here](https://nuxt.com/docs/getting-started/configuration).
+
+<h4 id="core-config">Core Configurations</h4>
+These core configurations are usually used in a seperate config file. Nuxt 3 allows you to configure all of them in the nuxt.config.ts file.
+
+<h5 id="vite">Vite</h5>
+The vite property is used to configure vite, which is the build tool used by Nuxt 3. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. Your build tool consists of your dev server, which lets you run your app locally on your machine. It also consists of your build process, which is used to build your app for production. Vite is used for both of these things.
+
+<h5 id="vue">Vue</h5>
+The vue property is used to configure vue, which is the frontend javascript framework used by Nuxt 3.
+
+<h5 id="nitro-config">Nitro</h5>
+The nitro property is used to configure Nitro, which is the server engine used by Nuxt 3. Read more in the <a href="#nitro">Nitro</a> section.
+
+<h4 id="used-config">Used Configurations</h4>
+
+<h5 id="ssr">SSR</h5>
+The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser.
+
+You can learn more about rendering concepts [here](https://v3.nuxtjs.org/guide/concepts/rendering/).
+
+You can learn more about Vite [here](https://vitejs.dev/guide/).
+
+<h5 id="runtimeconfig">Runtime config</h5>
+The runtimeConfig property is used to configure environment variables that we want to expose to the useRuntimeConfig() composable. The variables in the root are exposed to the server, and need to be prefixed by NUXT. The variables in the public object are exposed to client, and need to be prefixed by NUXT_PUBLIC.
+
+You can read more about Runtime config [here](https://nuxt.com/docs/api/composables/use-runtime-config).
+
+<h5 id="modules">Modules</h5>
+The modules property is used to configure nuxt modules.
+
+You can find an extensive list of nuxt modules that let you expand on your app [here](https://nuxt.com/modules).
+
+<h5 id="imports">Imports</h5>
+The imports property is used to configure the auto import feature of Nuxt.
+
+You can read more about the auto import feature [here](https://nuxt.com/docs/guide/concepts/auto-imports).
+
+<h5 id="devtools">Devtools</h5>
+The devtools property is used to configure the module @nuxt/devtools. You can use these devtools by clicking on the Nuxt icon in the bottom of your browser where the app is running.
+
+You can read more about the devtools [here](https://devtools.nuxtjs.org/).
 
 ### .env
 
@@ -95,8 +163,8 @@ Your.env file is used to store environment variables. These variables can be acc
 ```
 # General backend
 NODE_ENV="development"
-BASE_URL="http://localhost:3000"
-API_KEY=""
+NUXT_PUBLIC_URL="http://localhost:3000"
+NUXT_API_KEY=""
 ```
 
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
@@ -105,6 +173,7 @@ You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
 ```json
 {
+  // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "strict": true,
@@ -132,6 +201,7 @@ module.exports = {
   extends: ['@nuxtjs/eslint-config-typescript', 'plugin:prettier/recommended'],
   plugins: [],
   rules: {
+    'linebreak-style': ['error', 'unix'],
     'no-console': 'off',
     'import/default': 'off',
     'import/no-named-as-default-member': 'off',
@@ -184,18 +254,32 @@ You can learn more about Prettier [here](https://prettier.io/docs/en/index.html)
 ### .gitignore
 
 ```jsx
-node_modules
-*.log*
+# Nuxt dev/build outputs
+.output
 .nuxt
 .nitro
 .cache
-.output
-.env
 dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
 .DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
 ```
 
-This file is used to tell git which files to ignore. You can add files to this list as you see fit. This config is the default config for Nuxt 3, with .DS_Store files added.
+This file is used to tell git which files to ignore. You can add files to this list as you see fit. This config is the default config for Nuxt 3.
 
 You can learn more about git and .gitignore [here](https://git-scm.com/docs).
 
@@ -239,48 +323,6 @@ You can read more about the Composition API [here](https://v3.vuejs.org/guide/co
 This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000/).
 
 You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
-
-### nuxt.config.ts
-
-```jsx
-export default defineNuxtConfig({
-  ssr: true,
-  vite: {
-    define: {
-      'process.env.DEBUG': false,
-    },
-  },
-  runtimeConfig: {
-    public: {
-      env: process.env.NODE_ENV,
-      url: process.env.BASE_URL,
-    },
-  },
-  modules: [],
-})
-```
-
-This is the most important config file in your project. Your config is written inside the defineNuxtConfig() function.
-
-<h4 id="ssr">SSR</h4>
-The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser.
-
-You can learn more about rendering concepts [here](https://v3.nuxtjs.org/guide/concepts/rendering/).
-
-<h4 id="vite">Vite</h4>
-The vite property is used to configure vite, which is the build tool used by Nuxt 3. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. Your build tool consists of your dev server, which lets you run your app locally on your machine. It also consists of your build process, which is used to build your app for production. Vite is used for both of these things.
-
-You can learn more about Vite [here](https://vitejs.dev/guide/).
-
-<h4 id="runtimeconfig">Runtime config</h4>
-The runtimeConfig property is used to configure environment variables that we want to expose to the client (public).
-
-You can read more about Runtime config [here](https://nuxt.com/docs/api/composables/use-runtime-config).
-
-<h4 id="modules">Modules</h4>
-The modules property is used to configure nuxt modules.
-
-You can find an extensive list of nuxt modules that let you expand on your app [here](https://nuxt.com/modules).
 
 ---
 
