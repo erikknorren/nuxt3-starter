@@ -15,28 +15,26 @@ You can learn more about Vue.js [here](https://vuejs.org/guide/introduction.html
 Base included in this starter:
 
 - <a href="#nuxt3">Nuxt 3</a>
-- <a href="#vite">Vite - Build Tool</a>
-- <a href="#vue">Vue - Frontend Framework</a>
-- <a href="#pinia">Pinia - State Management</a>
-- <a href="#nitro">Nitro - Backend</a>
+- <a href="#config">Configuration</a>
+  - <a href="#vite">Vite - Build Tool</a>
+  - <a href="#env">Environment</a>
+  - <a href="#eslint">Eslint - Linter</a>
+  - <a href="#prettier">Prettier - Code Formatter</a>
+  - <a href="#git">Git - Version Control</a>
+- <a href="#frontend">Frontend</a>
+  - <a href="#vue">Vue - Frontend Framework</a>
+  - <a href="#pinia">Pinia - State Management</a>
+  - <a href="#scss">SCSS - CSS Preprocessor</a>
+  - <a href="#vuetify">Vuetify - Material Design Component Framework</a>
+  - <a href="#tailwind">Tailwind - CSS Utility Classes</a>
+- <a href="#backend">Backend</a>
+  - <a href="#nitro">Nitro</a>
+  - <a href="#nuxt-security">Nuxt Security - Headers</a>
+  - <a href="#prisma">Prisma - ORM</a>
 
 ---
 
-Frontend Additions:
-
-- <a href="#scss">SCSS - CSS Preprocessor</a>
-- <a href="#vuetify">Vuetify - Material Design Component Framework</a>
-- <a href="#tailwind">Tailwind - CSS Utility Classes</a>
-
----
-
-Backend Additions:
-
-- <a href="#prisma">Prisma - ORM</a>
-
----
-
-## Editor
+<h1 id="editor">Editor</h1>
 
 Open Your editor in the folder you want in a new window
 
@@ -51,7 +49,7 @@ Helpful Visual Studio Code extensions:
 
 ---
 
-<h2 id="nuxt3">Nuxt 3</h2>
+<h1 id="nuxt3">Nuxt 3</h1>
 
 Open Terminal
 
@@ -89,6 +87,10 @@ Open Terminal
 
 The next steps are configuring your project by adding or editing certain files in the root directory.
 
+---
+
+<h1 id="config">Configuration</h1>
+
 ### nuxt.config.ts
 
 ```jsx
@@ -115,93 +117,50 @@ This is the most important config file in your project. Your config is written i
 
 You can read more about configurating Nuxt 3 [here](https://nuxt.com/docs/getting-started/configuration).
 
-<h4 id="core-config">Core Configurations</h4>
-These core configurations are usually used in a seperate config file. Nuxt 3 allows you to configure all of them in the nuxt.config.ts file.
+<h3 id="core-config">Core Configurations</h3>
+These core configurations are usually used in a seperate config file. Nuxt 3 allows you to configure all of them in the nuxt.config.ts file. These are the core libraries/technologies that are used by Nuxt 3. This nuxt.config.ts setup uses all of the default settings for these core technologies.
 
-<h5 id="vite">Vite</h5>
+<h4 id="vite">Vite</h4>
 The vite property is used to configure vite, which is the build tool used by Nuxt 3. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. Your build tool consists of your dev server, which lets you run your app locally on your machine. It also consists of your build process, which is used to build your app for production. Vite is used for both of these things.
 
 You can learn more about Vite [here](https://vitejs.dev/guide/).
 
-<h5 id="vue">Vue</h5>
-The vue property is used to configure vue, which is the frontend javascript framework used by Nuxt 3. Vue is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex. Vue uses two types of syntax: the Options API and the Composition API. The Options API is the default syntax used by Vue. The composition API is a
+<h4 id="vue-config">Vue</h4>
+The vue property is used to configure vue, which is the frontend javascript framework used by Nuxt 3. Read more in the <a href="#vue">Vue</a> section.
 
-You can learn more about Vue [here](https://vuejs.org/guide/introduction.html).
-
-<h5 id="nitro-config">Nitro</h5>
+<h4 id="nitro-config">Nitro</h4>
 The nitro property is used to configure Nitro, which is the server engine used by Nuxt 3. Read more in the <a href="#nitro">Nitro</a> section.
 
-<h4 id="used-config">Used Configurations</h4>
+<h3 id="used-config">Used Configurations</h3>
 
-<h5 id="ssr">SSR</h5>
+<h4 id="ssr">SSR</h4>
 The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser.
 
 You can learn more about rendering concepts [here](https://v3.nuxtjs.org/guide/concepts/rendering/).
 
-<h5 id="runtimeconfig">Runtime config</h5>
+<h4 id="runtimeconfig">Runtime config</h4>
 The runtimeConfig property is used to configure environment variables that we want to expose to the useRuntimeConfig() composable. The variables in the root are exposed to the server, and need to be prefixed by NUXT. The variables in the public object are exposed to client, and need to be prefixed by NUXT_PUBLIC.
 
 You can read more about Runtime config [here](https://nuxt.com/docs/api/composables/use-runtime-config).
 
-<h5 id="modules">Modules</h5>
+<h4 id="modules">Modules</h4>
 The modules property is used to configure nuxt modules.
 
 You can find an extensive list of nuxt modules that let you expand on your app [here](https://nuxt.com/modules).
 
-<h5 id="imports">Imports</h5>
+<h4 id="imports">Imports</h4>
 The imports property is used to configure the auto import feature of Nuxt.
 
 You can read more about the auto import feature [here](https://nuxt.com/docs/guide/concepts/auto-imports).
 
-<h5 id="devtools">Devtools</h5>
+<h4 id="devtools">Devtools</h4>
 The devtools property is used to configure the module @nuxt/devtools. You can use these devtools by clicking on the Nuxt icon in the bottom of your browser where the app is running.
 
 You can read more about the devtools [here](https://devtools.nuxtjs.org/).
 
-### app.vue
-
-```html
-<template>
-  <div id="app">
-    <NuxtPage />
-  </div>
-</template>
-
-<script setup lang="ts">
-  useHead({
-    title: 'Nuxt app',
-    meta: [{ hid: 'description', name: 'description', content: 'Nuxt app' }],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    htmlAttrs: { lang: 'en' },
-  })
-</script>
-```
-
-app.vue is the root Vue component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
-
-Do note the setup property in the script tag, this is used to write our Vue 3 code in the Composition API style. This style is modular and is closer to vanilla Javascript than the Options API style.
-
-You can read more about the Composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
-
-### pages/index.vue
-
-```html
-<template>
-  <div class="index">
-    <h1>Index page</h1>
-  </div>
-</template>
-
-<script setup lang="ts"></script>
-```
-
-This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000/).
-
-You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
-
 ---
 
-### .env
+<h3 id="env">.env</h3>
 
 Your.env file is used to store environment variables. These variables can be accessed in your **server side code only** using process.env.ENVIRONMENT_VARIABLE_NAME. This is useful for storing sensitive information such as api keys, or for storing different values for different build environments.
 
@@ -214,7 +173,9 @@ NUXT_API_KEY=""
 
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
-### .tsconfig.json
+---
+
+<h3 id="tsconfig">tsconfig.json</h3>
 
 ```json
 {
@@ -234,7 +195,9 @@ You can learn more about Typescript [here](https://www.typescriptlang.org/docs/h
 
 You can learn more about Typescript with Nuxt 3 [here](https://nuxt.com/docs/guide/concepts/typescript).
 
-### .eslintrc.js
+---
+
+<h3 id="eslint">.eslintrc.js</h3>
 
 ```jsx
 module.exports = {
@@ -278,7 +241,9 @@ Now you can run the following commands in terminal to lint, and subsequently fix
 
 You can learn more about how to configure ESLint [here](https://eslint.org/docs/latest/use/configure/).
 
-### .prettierrc.js
+---
+
+<h3 id="prettier">.prettierrc.js</h3>
 
 ```jsx
 module.exports = {
@@ -295,7 +260,9 @@ Do you have the prettier extension installed in your editor? Prettier will autom
 
 You can learn more about Prettier [here](https://prettier.io/docs/en/index.html).
 
-### .gitignore
+---
+
+<h3 id="git">.gitignore</h3>
 
 ```jsx
 # Nuxt dev/build outputs
@@ -326,6 +293,59 @@ logs
 This file is used to tell git which files to ignore. You can add files to this list as you see fit. This config is the default config for Nuxt 3.
 
 You can learn more about git and .gitignore [here](https://git-scm.com/docs).
+
+---
+
+<h1 id="frontend">Frontend</h1>
+
+<h2 id="vue">Vue</h2>
+
+Vue is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex. Vue uses two types of syntax: the Options API and the Composition API. This project uses the Composition API, which was introduced in Vue 3.
+
+You can learn more about Vue [here](https://vuejs.org/guide/introduction.html).
+
+### app.vue
+
+```html
+<template>
+  <div id="app">
+    <NuxtPage />
+  </div>
+</template>
+
+<script setup lang="ts">
+  useHead({
+    title: 'Nuxt app',
+    meta: [{ hid: 'description', name: 'description', content: 'Nuxt app' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    htmlAttrs: { lang: 'en' },
+  })
+</script>
+```
+
+app.vue is the root Vue component of your app. Every page using Nuxt 3 file based routing will be rendered inside the NuxtPage component. You can also place components or html here that is shared across the app, such as a navbar. Some page meta tags are also set here, using the useHead() composable. For example, the title and favicon.
+
+Do note the setup property in the script tag, this is used to write our Vue 3 code in the Composition API style. This style is modular and is closer to vanilla Javascript than the Options API style.
+
+You can read more about the Composition API [here](https://v3.vuejs.org/guide/composition-api-introduction.html).
+
+### pages/index.vue
+
+```html
+<template>
+  <div class="index">
+    <h1>Index page</h1>
+  </div>
+</template>
+
+<script setup lang="ts"></script>
+```
+
+This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000/).
+
+You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
+
+---
 
 <h2 id="pinia">Pinia</h2>
 
@@ -376,116 +396,6 @@ Now in any component you can use the following code snippet to initialize the st
 ```tsx
 const store = useStore()
 ```
-
----
-
-<h2 id="nitro">Nitro</h2>
-
-Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. A server engine is different from a seperate backend application. Because Nitro also serves the server-side rendered website. Nitro uses the unjs/h3 http library for API endpoints and middleware, which is built for high performance and portability.
-
-You can learn more about server directory [here](https://nuxt.com/docs/guide/directory-structure/server).
-You can learn more about Nitro [here](https://nitro.unjs.io/).
-This documentation mentions a basic middleware file, api request and server plugin. Everything you need to run your backend application.
-
-You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
-
-### /server/api/test.post.ts
-
-Similar to the pages system, you can create api endpoints by creating files in the /server/api directory. The file name is the endpoint name, and the file extension is the request method. The file should export a default function that returns an object. This object will be returned as a json response by default.
-
-To access dynamic route parameters, query parameters, hearders and body you can use the event context.
-
-Note that reading of the request body is called asynchronously, so you need to use the await keyword. Make sure to include the async keyword before the arrow function definition.
-
-```tsx
-export default defineEventHandler(async (event) => {
-  try {
-    return {
-      statusCode: 200,
-      statusMessage: 'OK',
-      url: event.node.req.url,
-      method: event.node.req.method,
-      query: getQuery(event),
-      headers: getRequestHeaders(event),
-      body: await readBody(event),
-    }
-  } catch (error) {
-    console.log(error)
-    return sendError(event, createError({ statusCode: 500, statusMessage: 'Internal Server Error' }))
-  }
-})
-```
-
-This example is pretty verbose, but demonstrates how to use the event context by returning it's properties directly to the user. The try/catch block is used to catch any errors that might occur while reading the request body. This serves as a foundational example on how to handle errors in Nitro. This endpoint can be used to test if the backend application is working, for monitoring purposes.
-
-### /server/middleware/middleware.ts
-
-```tsx
-const publicRoutes: string[] = ['/api/test']
-
-export default defineEventHandler((event) => {
-  console.log('New request: ' + event.path)
-  const headers = getRequestHeaders(event)
-  // API Middleware
-  if (event.path?.startsWith('/api/')) {
-    if (publicRoutes.some((route) => event.path?.startsWith(route))) {
-      console.log('Public route, no authorization required')
-      return eventHandler((event) => ({ url: event.path }))
-    }
-    if (headers['x-api-key'] === process.env.API_KEY) {
-      console.log('API key provided')
-      return eventHandler((event) => ({ url: event.path }))
-    }
-    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized' }))
-  }
-})
-```
-
-To protect the backend application, you want to add a basic middleware layer. Nuxt 3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. The code checks if the request path starts with a route listed in the publicRoutes array. If not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
-
-### /server/plugins/server.ts
-
-```tsx
-export default defineNitroPlugin(async (nitroApp) => {
-  console.log('Nitro server starting...')
-  const testResponse = await $fetch('/api/test', { method: 'POST' })
-  console.log('testResponse:', testResponse.statusCode, testResponse.statusMessage)
-  return nitroApp
-})
-```
-
-Plugins are used to extend Nitro's runtime behavior.
-Plugins are auto-registered (filename ordering) and run synchronously on the first nitro initialization. They receive nitroApp context, which can be used to hook into lifecycle events. For example, you can run CRON jobs. However, most hosting providers for Nuxt 3 applications are serverless. So CRON jobs are unreliable, since runtime is limited to the request-response cycle.
-
-<h2 id="nuxt-security">Nuxt Security</h2>
-
-`yarn add nuxt-security`
-
-Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to configure security headers. The module also ships with additional security features by default, for example:
-
-- Request size limiting: default size limit set to 2mb request and 8mb file upload.
-- Request rate limiting: default rate limit set to 150 requests per hour.
-- CORS Handler: default origin set to \*.
-
-Add the following to the **modules array of nuxt.config.ts**:
-
-```tsx
-'nuxt-security'
-```
-
-It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading, you can configure the headers in nuxt.config.ts in the security property. This object can also be used to configure your rate limit and size limit settings. Disabling the following header will allow you to use the Nuxt Devtools iframe in your application.
-
-Add the following property to **nuxt.config.ts**:
-
-```tsx
-security: {
-  headers: {
-    crossOriginEmbedderPolicy: 'unsafe-none',
-  },
-},
-```
-
-You can learn more about Nuxt Security configuration [here](https://nuxt-security.vercel.app/getting-started/configuration).
 
 ---
 
@@ -646,6 +556,120 @@ plugins: ['prettier-plugin-tailwindcss']
 ```
 
 This prettier plugin orders your tailwind classes in a standardized way. This is helpful when working in a team, it also makes it easier to find classes in your code
+
+---
+
+<h1 id="backend">Backend</h1>
+
+<h2 id="nitro">Nitro</h2>
+
+Nitro is the server engine used by Nuxt 3. The server directory is where you can configure the server/backend of your application. A server engine is different from a seperate backend application. Because Nitro also serves the server-side rendered website. Nitro uses the unjs/h3 http library for API endpoints and middleware, which is built for high performance and portability.
+
+You can learn more about server directory [here](https://nuxt.com/docs/guide/directory-structure/server).
+You can learn more about Nitro [here](https://nitro.unjs.io/).
+This documentation mentions a basic middleware file, api request and server plugin. Everything you need to run your backend application.
+
+You can find the documentation for h3 functions [here](https://www.jsdocs.io/package/h3#package-index-functions).
+
+### /server/api/test.post.ts
+
+Similar to the pages system, you can create api endpoints by creating files in the /server/api directory. The file name is the endpoint name, and the file extension is the request method. The file should export a default function that returns an object. This object will be returned as a json response by default.
+
+To access dynamic route parameters, query parameters, hearders and body you can use the event context.
+
+Note that reading of the request body is called asynchronously, so you need to use the await keyword. Make sure to include the async keyword before the arrow function definition.
+
+```tsx
+export default defineEventHandler(async (event) => {
+  try {
+    return {
+      statusCode: 200,
+      statusMessage: 'OK',
+      url: event.node.req.url,
+      method: event.node.req.method,
+      query: getQuery(event),
+      headers: getRequestHeaders(event),
+      body: await readBody(event),
+    }
+  } catch (error) {
+    console.log(error)
+    return sendError(event, createError({ statusCode: 500, statusMessage: 'Internal Server Error' }))
+  }
+})
+```
+
+This example is pretty verbose, but demonstrates how to use the event context by returning it's properties directly to the user. The try/catch block is used to catch any errors that might occur while reading the request body. This serves as a foundational example on how to handle errors in Nitro. This endpoint can be used to test if the backend application is working, for monitoring purposes.
+
+### /server/middleware/middleware.ts
+
+```tsx
+const publicRoutes: string[] = ['/api/test']
+
+export default defineEventHandler((event) => {
+  console.log('New request: ' + event.path)
+  const headers = getRequestHeaders(event)
+  // API Middleware
+  if (event.path?.startsWith('/api/')) {
+    if (publicRoutes.some((route) => event.path?.startsWith(route))) {
+      console.log('Public route, no authorization required')
+      return eventHandler((event) => ({ url: event.path }))
+    }
+    if (headers['x-api-key'] === process.env.API_KEY) {
+      console.log('API key provided')
+      return eventHandler((event) => ({ url: event.path }))
+    }
+    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized' }))
+  }
+})
+```
+
+To protect the backend application, you want to add a basic middleware layer. Nuxt 3 automatically recognizes files in the /server/middleware directory to inject before every server/api route request. This code snippet is an example of an authentication layer. The code checks if the request path starts with a route listed in the publicRoutes array. If not, it checks if the request has a valid API key. If the request is not a public route, and does not have a valid API key, it will return a 401 error. This way every api route is protected by default, and you can add exceptions to the publicRoutes array.
+
+### /server/plugins/server.ts
+
+```tsx
+export default defineNitroPlugin(async (nitroApp) => {
+  console.log('Nitro server starting...')
+  const testResponse = await $fetch('/api/test', { method: 'POST' })
+  console.log('testResponse:', testResponse.statusCode, testResponse.statusMessage)
+  return nitroApp
+})
+```
+
+Plugins are used to extend Nitro's runtime behavior.
+Plugins are auto-registered (filename ordering) and run synchronously on the first nitro initialization. They receive nitroApp context, which can be used to hook into lifecycle events. For example, you can run CRON jobs. However, most hosting providers for Nuxt 3 applications are serverless. So CRON jobs are unreliable, since runtime is limited to the request-response cycle.
+
+---
+
+<h2 id="nuxt-security">Nuxt Security</h2>
+
+`yarn add nuxt-security`
+
+Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to configure security headers. The module also ships with additional security features by default, for example:
+
+- Request size limiting: default size limit set to 2mb request and 8mb file upload.
+- Request rate limiting: default rate limit set to 150 requests per hour.
+- CORS Handler: default origin set to \*.
+
+Add the following to the **modules array of nuxt.config.ts**:
+
+```tsx
+'nuxt-security'
+```
+
+It should be noted that if you want or need to loosen some security settings, for example cross-origin image loading, you can configure the headers in nuxt.config.ts in the security property. This object can also be used to configure your rate limit and size limit settings. Disabling the following header will allow you to use the Nuxt Devtools iframe in your application.
+
+Add the following property to **nuxt.config.ts**:
+
+```tsx
+security: {
+  headers: {
+    crossOriginEmbedderPolicy: 'unsafe-none',
+  },
+},
+```
+
+You can learn more about Nuxt Security configuration [here](https://nuxt-security.vercel.app/getting-started/configuration).
 
 ---
 
