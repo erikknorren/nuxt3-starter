@@ -9,7 +9,7 @@ export default defineEventHandler((event) => {
       console.log('Public route, no authorization required')
       return eventHandler((event) => ({ url: event.path }))
     }
-    if (headers['x-api-key'] === process.env.API_KEY) {
+    if (headers['x-api-key'] === process.env.NUXT_API_KEY) {
       console.log('API key provided')
       return eventHandler((event) => ({ url: event.path }))
     }
