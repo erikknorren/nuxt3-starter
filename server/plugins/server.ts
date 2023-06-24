@@ -1,4 +1,5 @@
 export default defineNitroPlugin(async (nitroApp) => {
-  console.log('Starting Nitro server:', (await $fetch('/api/test', { method: 'POST' })).statusCode === 200 ? 'responding' : 'not responding')
+  const testResponse = await $fetch('/api/test', { method: 'POST' })
+  console.log('Nitro API testResponse:', testResponse.statusCode, testResponse.statusMessage)
   return nitroApp
 })
