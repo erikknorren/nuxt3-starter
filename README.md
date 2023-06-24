@@ -167,8 +167,13 @@ Your.env file is used to store environment variables. These variables can be acc
 ```
 # General backend
 NODE_ENV="development"
-NUXT_PUBLIC_URL="http://localhost:3000"
+
+# Nuxt 3 - Can be exposed to runtime config server side
 NUXT_API_KEY=""
+
+# Nuxt 3 Public - Can be exposed to public runtime config client side
+NUXT_PUBLIC_URL="http://localhost:3000"
+
 ```
 
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
