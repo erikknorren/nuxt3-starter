@@ -7,7 +7,6 @@ module.exports = {
   extends: ['@nuxtjs/eslint-config-typescript', 'plugin:prettier/recommended'],
   plugins: [],
   rules: {
-    'linebreak-style': ['error', 'unix'],
     'no-console': 'off',
     'import/default': 'off',
     'import/no-named-as-default-member': 'off',
