@@ -183,7 +183,6 @@ You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
 ```json
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "strict": true,
