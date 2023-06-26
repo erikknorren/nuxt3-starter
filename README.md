@@ -123,10 +123,10 @@ The vite property is used to configure vite, which is the build tool used by Nux
 
 You can learn more about Vite [here](https://vitejs.dev/guide/).
 
-<h4 id="config-vue">Vue</h4>
+<h4 id="config-vue">Vue (config)</h4>
 The vue property is used to configure vue, which is the frontend javascript framework used by Nuxt 3. Read more in the <a href="#vue">Vue</a> section.
 
-<h4 id="config-nitro">Nitro</h4>
+<h4 id="config-nitro">Nitro (config)</h4>
 The nitro property is used to configure Nitro, which is the server engine used by Nuxt 3. Read more in the <a href="#nitro">Nitro</a> section.
 
 <h3 id="config-used">Used Configurations</h3>
