@@ -8,8 +8,6 @@ Nuxt 3 is a meta framework build on top of Vue.js, Vite, Nitro, and Typescript. 
 
 You can learn more about the basics, as well as documentation of Nuxt 3 [here](https://nuxt.com/docs).
 
-You can learn more about Vue.js [here](https://vuejs.org/guide/introduction.html).
-
 ---
 
 Base included in this starter:
