@@ -115,7 +115,7 @@ This is the most important config file in your project. Your config is written i
 
 You can read more about configurating Nuxt 3 [here](https://nuxt.com/docs/getting-started/configuration).
 
-<h3 id="core-config">Core Configurations</h3>
+<h3 id="coreconfig">Core Configurations</h3>
 These core configurations are usually used in a seperate config file. Nuxt 3 allows you to configure all of them in the nuxt.config.ts file. These are the core libraries/technologies that are used by Nuxt 3. This nuxt.config.ts setup uses all of the default settings for these core technologies.
 
 <h4 id="vite">Vite</h4>
@@ -123,13 +123,13 @@ The vite property is used to configure vite, which is the build tool used by Nux
 
 You can learn more about Vite [here](https://vitejs.dev/guide/).
 
-<h4 id="vue-config">Vue</h4>
+<h4 id="vueconfig">Vue</h4>
 The vue property is used to configure vue, which is the frontend javascript framework used by Nuxt 3. Read more in the <a href="#vue">Vue</a> section.
 
-<h4 id="nitro-config">Nitro</h4>
+<h4 id="nitroconfig">Nitro</h4>
 The nitro property is used to configure Nitro, which is the server engine used by Nuxt 3. Read more in the <a href="#nitro">Nitro</a> section.
 
-<h3 id="used-config">Used Configurations</h3>
+<h3 id="usedconfig">Used Configurations</h3>
 
 <h4 id="ssr">SSR</h4>
 The ssr property is used to enable or disable server side rendering. Nuxt 3 ships server-side rendering by default. This means the server returns a fully rendered HTML page to the browser.
