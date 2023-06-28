@@ -177,6 +177,8 @@ NUXT_PUBLIC_URL="http://localhost"
 
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
+**IMPORTANT:** It is not possible to overwrite NODE_ENV even though it is in the .env file. This is because NODE_ENV is a reserved environment variable. The value is either "development" or "production" depending on the build environment. If you want to add more build environments, for example a test environment, you can replace the env variable in the runtimeConfig public object. For example: `env: process.env.NUXT_PUBLIC_ENV`
+
 ---
 
 <h3 id="tsconfig">tsconfig.json</h3>
@@ -358,7 +360,7 @@ You can read more about pages [here](https://nuxt.com/docs/guide/directory-struc
 
 ```tsx
 export const useStore = defineStore('pinia-store', () => {
-  const env = useRuntimeConfig().public.env as 'development' | 'test' | 'production'
+  const env = useRuntimeConfig().public.env as 'development' | 'production'
   return {
     env,
   }
