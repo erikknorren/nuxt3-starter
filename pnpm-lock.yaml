@@ -11,6 +11,9 @@ dependencies:
   nuxt-security:
     specifier: ^0.13.1
     version: 0.13.1
+  pinia:
+    specifier: ^2.1.4
+    version: 2.1.4(typescript@5.1.3)(vue@3.3.4)
   vue:
     specifier: ^3.3.4
     version: 3.3.4
