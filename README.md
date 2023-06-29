@@ -74,10 +74,10 @@ Open Terminal
   12. **[content](https://nuxt.com/docs/guide/directory-structure/content)**: contains your content files, such as markdown files. Used to create a file based CMS. Requires installation of the @nuxt/content module.
   13. **types**: contains your typescript types. If you define your types in a **.d.ts** file. You can use your types across the application.
 
-- `yarn add vue`
+- `pnpm add vue`
   The next step is to add boilerplate dependencies:
   1. **Vue** is the frontend framework used for this app, most of the vue features are already included in Nuxt 3.
-- `yarn add --dev eslint prettier eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
+- `pnpm add -D eslint prettier eslint-config-prettier eslint-plugin-prettier @nuxtjs/eslint-config-typescript`
   This step is installing dev dependencies:
   1. **Typescript**: we want to use strict Typescript because it leads to smoother developing, building and debugging. It also helps with code completion and documentation. Typescript is installed by default
   2. **ESLint**: we want to use ESLint to enforce certain code styles and rules, such as no unused variables.
@@ -240,9 +240,9 @@ change package.json `"scripts"` object to the following by adding a `lint` scrip
 
 Now you can run the following commands in terminal to lint, and subsequently fix your code (that can be fixed automatically). Your linting will be using the config you made in .eslintrc.js. This config is fairly opinitinated, but you can change it to your liking by changing your config.
 
-`yarn lint`
+`pnpm lint`
 
-`yarn lint --fix`
+`pnpm lint --fix`
 
 You can learn more about how to configure ESLint [here](https://eslint.org/docs/latest/use/configure/).
 
@@ -354,7 +354,7 @@ You can read more about pages [here](https://nuxt.com/docs/guide/directory-struc
 
 <h2 id="pinia">Pinia</h2>
 
-`yarn add @pinia/nuxt`
+`pnpm add @pinia/nuxt`
 
 ### store/store.ts
 
@@ -408,7 +408,7 @@ const store = useStore()
 
 <b>If you are planning on using Vuetify, it is recommended you follow this step. If you are planning on using Tailwind, you do NOT need to perform this step.</b>
 
-`yarn add sass`
+`pnpm add sass`
 
 SCSS or SASS is a CSS preprocessor. It allows you to use variables, mixins, functions and more to write more efficient CSS. It also allows you to write CSS in a more structured way, which makes it easier to maintain. All SCSS files are suffixed with .scss.
 
@@ -450,7 +450,7 @@ This will make sure the css is only applied to that component.
 
 <b>If you are planning to use Vuetify, It is recommended to follow the <a href="#scss">SCSS</a> step first. It is recommended NOT to use Tailwind in combination.</b>
 
-`yarn add vuetify@next @mdi/font`
+`pnpm add vuetify@next @mdi/font`
 
 Vuetify is a Material Design component framework for Vue.js. It is a very popular component library, and is used by many Nuxt 3 applications. It is recommended you use Vuetify if you are planning on using Material Design components. The @mdi/font package is required for the Material Design icons, these are used by default in Vuetify.
 
@@ -505,7 +505,7 @@ build: {
 
 <h2 id="tailwind">Tailwind</h2>
 
-`yarn add --dev @nuxtjs/tailwindcss prettier-plugin-tailwindcss`
+`pnpm add -D @nuxtjs/tailwindcss prettier-plugin-tailwindcss`
 
 Tailwind CSS is a utility-first CSS framework. It is a very popular CSS framework, allowing you to write inline css without opiniated best practies.
 
@@ -648,7 +648,7 @@ Plugins are auto-registered (filename ordering) and run synchronously on the fir
 
 <h2 id="nuxt-security">Nuxt Security</h2>
 
-`yarn add nuxt-security`
+`pnpm add nuxt-security`
 
 Nuxt Security is an [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) module that adds a few security improvements in form of a customizable server middlewares to your Nuxt 3 application. All middlewares can be modified or disabled if needed. They can also be configured to work only on certain routes. By default all middlewares are configured to work globally. This everything on approach is chosen to make it easy to ship a secure application without having to configure security headers. The module also ships with additional security features by default, for example:
 
@@ -680,9 +680,9 @@ You can learn more about Nuxt Security configuration [here](https://nuxt-securit
 
 <h2 id="prisma">Prisma</h2>
 
-`yarn add --dev prisma`
+`pnpm add -D prisma`
 
-`yarn add @prisma/client`
+`pnpm add @prisma/client`
 
 Prisma is an ORM, which is a layer that maps your database structure to the programming language you are using in your application. It allows you to bridge the gap between the backend part of your Nuxt 3 application and your database. It allows for easy to use database queries using Typescript, which allows you to achieve typesafety across your whole technology stack. It also prevents you from having to write SQL queries in a non SQL environment/language which is prone to errors.
 
@@ -721,7 +721,7 @@ export default prisma
 
 Afterwards, to start importing and using your database model, you can run the following commands in terminal.
 
-- `npx prisma db pull`
-- `npx prisma generate`
+`npx prisma db pull`
+`npx prisma generate`
 
 ---
