@@ -338,7 +338,7 @@ You can read more about the Composition API [here](https://v3.vuejs.org/guide/co
 
 ```html
 <template>
-  <div class="index">
+  <div id="index">
     <h1>Index page</h1>
   </div>
 </template>
