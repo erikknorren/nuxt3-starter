@@ -722,6 +722,7 @@ export default prisma
 Afterwards, to start importing and using your database model, you can run the following commands in terminal.
 
 `npx prisma db pull`
+
 `npx prisma generate`
 
 ---
