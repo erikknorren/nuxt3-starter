@@ -354,7 +354,7 @@ You can read more about pages [here](https://nuxt.com/docs/guide/directory-struc
 
 <h2 id="pinia">Pinia</h2>
 
-`pnpm add @pinia/nuxt`
+`pnpm add pinia @pinia/nuxt`
 
 ### store/store.ts
 
