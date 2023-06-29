@@ -560,7 +560,7 @@ Add the following array to **.prettierrc.js**:
 plugins: ['prettier-plugin-tailwindcss']
 ```
 
-This prettier plugin orders your tailwind classes in a standardized way. This is helpful when working in a team, it also makes it easier to find classes in your code
+This prettier plugin orders your tailwind classes in a standardized way. This is helpful when working in a team, it also makes it easier to find classes in your code.
 
 ---
 
