@@ -616,12 +616,10 @@ export default defineEventHandler((event) => {
   // API Middleware
   if (event.path?.startsWith('/api/')) {
     if (publicRoutes.some((route) => event.path?.startsWith(route))) {
-      console.log('Public route, no authorization required')
-      return eventHandler((event) => ({ url: event.path }))
+      return console.log('Public route, no authorization required')
     }
     if (headers['x-api-key'] === process.env.NUXT_API_KEY) {
-      console.log('API key provided')
-      return eventHandler((event) => ({ url: event.path }))
+      return console.log('API key provided')
     }
     return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized' }))
   }
