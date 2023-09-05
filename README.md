@@ -477,13 +477,11 @@ Change the following in **app.vue**:
 
 ```html
 <template>
-  <div id="app">
-    <VApp>
-      <VMain>
-        <NuxtPage />
-      </VMain>
-    </VApp>
-  </div>
+  <VApp id="app">
+    <VMain>
+      <NuxtPage />
+    </VMain>
+  </VApp>
 </template>
 ```
 
