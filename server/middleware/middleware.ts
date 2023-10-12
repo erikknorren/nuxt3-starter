@@ -11,6 +11,6 @@ export default defineEventHandler((event) => {
     if (headers['x-api-key'] === process.env.NUXT_API_KEY) {
       return console.log('API key provided')
     }
-    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized' }))
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
   }
 })
