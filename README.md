@@ -1,4 +1,4 @@
-<img src="https://nuxt.com/assets/design-kit/logo/icon-green.svg" alt="Nuxt Logo" style="height: 128px; width: 128px;"/>
+<img src="https://nuxt.com/assets/design-kit/icon-green.svg" alt="Nuxt Logo" style="height: 128px; width: 128px;"/>
 
 # Nuxt 3 Starter
 
