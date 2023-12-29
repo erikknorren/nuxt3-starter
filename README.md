@@ -688,7 +688,7 @@ security: {
 },
 ```
 
-You can learn more about Nuxt Security configuration [here](https://nuxt-security.vercel.app/getting-started/configuration).
+You can learn more about Nuxt Security configuration [here](https://nuxt-security.vercel.app/documentation/getting-started/setup).
 
 ---
 
