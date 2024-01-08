@@ -4,7 +4,3 @@ export const useStore = defineStore('pinia-store', () => {
     env,
   }
 })
-
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot))
-}
