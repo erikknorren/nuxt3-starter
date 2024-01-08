@@ -257,6 +257,8 @@ change package.json `"scripts"` object to the following by adding a `lint` scrip
 },
 ```
 
+If you need to change the Node version, you can do so in the engines object. You can also change the metadata of your application in package.json.
+
 Now you can run the following commands in terminal to lint, and subsequently fix your code (that can be fixed automatically). Your linting will be using the config you made in .eslintrc.js. This config is fairly opinitinated, but you can change it to your liking by changing your config.
 
 `pnpm lint`
