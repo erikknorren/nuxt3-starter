@@ -14,9 +14,6 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-  pinia: {
-    autoImports: ['defineStore', 'acceptHMRUpdate'],
-  },
   security: {
     headers: {
       crossOriginEmbedderPolicy: 'unsafe-none',
