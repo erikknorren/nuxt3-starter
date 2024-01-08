@@ -384,10 +384,6 @@ export const useStore = defineStore('pinia-store', () => {
     env,
   }
 })
-
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot))
-}
 ```
 
 This is the store file. It is a Typescript file, and it is using the Pinia library. Pinia is the standard state management system established by the Vue core team. The store is defined using the defineStore() function. The first argument is the name of the store, and the second argument is a function that returns an object. This object contains the state, getters, mutations, and actions of the store. By declaring the function with the ()=> syntax, the store is written in the Vue 3 composition api syntax. The store is then exported as a function called useStore(). By using the last part of the file, this function can be used in any component.
@@ -408,18 +404,17 @@ Add the following properties to **nuxt.config.ts**:
 imports: {
     dirs: ["store"],
 },
-pinia: {
-    autoImports: ['defineStore', 'acceptHMRUpdate'],
-},
 ```
 
-This will automatically import the store file into the app, and will also automatically import the defineStore() and acceptHMRUpdate() functions from pinia.
+This will automatically import the store file into the app.
 
 Now in any component you can use the following code snippet to initialize the store in your script tag, which then can also be used in your html.
 
 ```tsx
 const store = useStore()
 ```
+
+Or call `useStore()` directly in your html or javascript.
 
 ---
 
