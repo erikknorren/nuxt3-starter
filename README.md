@@ -308,7 +308,7 @@ logs
 *.log
 
 # Misc
-.DS_Store
+*.DS_Store
 .fleet
 .idea
 
