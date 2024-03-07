@@ -166,9 +166,8 @@ PORT="3000"
 NUXT_API_KEY=""
 
 # Nuxt 3 Public - Can be exposed to public runtime config client side
-NUXT_PUBLIC_URL="http://localhost:3000"
 NUXT_PUBLIC_ENV="development"
-
+NUXT_PUBLIC_URL="http://localhost:3000"
 ```
 
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
