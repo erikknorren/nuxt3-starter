@@ -26,7 +26,6 @@ Base included in this starter:
 - <a href="#backend">Backend</a>
   - <a href="#nitro">Nitro</a>
   - <a href="#nuxt-security">Nuxt Security - Headers</a>
-  - <a href="#prisma">Prisma - ORM</a>
 
 ---
 
@@ -448,6 +447,12 @@ Add the following property to **nuxt.config.ts**:
 tailwindcss: {
     exposeConfig: true,
     viewer: true,
+},
+```
+If you do not want to have to implement light and dark color mode, you can set the colorMode to light (or dark) in nuxt.config.ts as follows:
+```tsx
+colorMode: {
+    preference: 'light',
 },
 ```
 
