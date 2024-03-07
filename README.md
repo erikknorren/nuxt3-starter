@@ -457,9 +457,6 @@ tailwindcss: {
 export default defineAppConfig({
   ui: {
     primary: 'primaryColor',
-    notifications: {
-      position: 'top-0 bottom-auto',
-    },
   },
 })
 ```
@@ -482,6 +479,7 @@ export default <Partial<Config>>{
   },
 }
 ```
+
 This file is used to configure tailwind css. It is a typescript file, and it is used to extend the default tailwind css configuration. The primaryColor is set to the blue color from the tailwind css color palette. This color is then used as the primary color in the Nuxt UI components as configured in the app.config.ts file.
 
 ### /assets/css/tailwind.css
