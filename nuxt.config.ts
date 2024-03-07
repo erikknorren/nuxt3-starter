@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       url: process.env.NUXT_PUBLIC_URL,
     },
   },
-  modules: ['@nuxt/devtools', '@pinia/nuxt', 'nuxt-security'],
+  modules: ['@nuxt/devtools', '@pinia/nuxt', 'nuxt-security', '@nuxt/ui'],
   imports: {
     dirs: ['store'],
   },
@@ -18,5 +18,9 @@ export default defineNuxtConfig({
     headers: {
       crossOriginEmbedderPolicy: 'unsafe-none',
     },
+  },
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
   },
 })
