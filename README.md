@@ -22,9 +22,7 @@ Base included in this starter:
 - <a href="#frontend">Frontend</a>
   - <a href="#vue">Vue - Frontend Framework</a>
   - <a href="#pinia">Pinia - State Management</a>
-  - <a href="#scss">SCSS - CSS Preprocessor</a>
-  - <a href="#vuetify">Vuetify - Material Design Component Framework</a>
-  - <a href="#tailwind">Tailwind - CSS Utility Classes</a>
+  - <a href="#nuxtui">Nuxt UI - Tailwind first UI Components</a>
 - <a href="#backend">Backend</a>
   - <a href="#nitro">Nitro</a>
   - <a href="#nuxt-security">Nuxt Security - Headers</a>
