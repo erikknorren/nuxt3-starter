@@ -22,7 +22,7 @@ Base included in this starter:
 - <a href="#frontend">Frontend</a>
   - <a href="#vue">Vue - Frontend Framework</a>
   - <a href="#pinia">Pinia - State Management</a>
-  - <a href="#nuxtui">Nuxt UI - Tailwind first UI Components</a>
+  - <a href="#nuxt-ui">Nuxt UI - Tailwind first UI Components</a>
 - <a href="#backend">Backend</a>
   - <a href="#nitro">Nitro</a>
   - <a href="#nuxt-security">Nuxt Security - Headers</a>
@@ -38,10 +38,8 @@ Helpful Visual Studio Code extensions:
 
 - Prettier - Code formatter
 - ESLint
-- Vue Language Features (Volar)
-- Typescript Vue Plugin (Volar)
-- vuetify-vscode _(if using vuetify)_
-- Tailwind CSS Intellisense _(if using tailwind)_
+- Vue - Official
+- Tailwind CSS Intellisense
 
 ---
 
@@ -169,7 +167,8 @@ PORT="3000"
 NUXT_API_KEY=""
 
 # Nuxt 3 Public - Can be exposed to public runtime config client side
-NUXT_PUBLIC_URL="http://localhost"
+NUXT_PUBLIC_URL="http://localhost:3000"
+NUXT_PUBLIC_ENV="development"
 
 ```
 
@@ -367,7 +366,7 @@ You can read more about the Composition API [here](https://v3.vuejs.org/guide/co
 <script setup lang="ts"></script>
 ```
 
-This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000/).
+This is the index.vue page, which is rendered at the base route of your app (http://localhost:3000).
 
 You can read more about pages [here](https://nuxt.com/docs/guide/directory-structure/pages).
 
@@ -420,131 +419,70 @@ Or call `useStore()` directly in your html or javascript.
 
 ---
 
-<h2 id="scss">SCSS</h2>
+<h2 id="nuxt-ui">Nuxt UI</h2>
 
-<b>If you are planning on using Vuetify, it is recommended you follow this step. If you are planning on using Tailwind, you do NOT need to perform this step.</b>
+`pnpm add @nuxt/ui`
 
-`pnpm add sass`
+`pnpm add -D prettier-plugin-tailwindcss`
 
-SCSS or SASS is a CSS preprocessor. It allows you to use variables, mixins, functions and more to write more efficient CSS. It also allows you to write CSS in a more structured way, which makes it easier to maintain. All SCSS files are suffixed with .scss.
+Nuxt UI is a module that provides a set of Vue components and composables built with Tailwind CSS and Headless UI to help you build beautiful and accessible user interfaces.
+Its goal is to provide everything related to UI when building a Nuxt app. This includes components, icons, colors, dark mode but also keyboard shortcuts.
 
-You can learn more about SCSS [here](https://sass-lang.com/documentation/).
+You can learn more about Nuxt UI [here](https://ui.nuxt.com/getting-started).
 
-### /assets/css/main.scss
+When you install Nuxt UI,
 
-```scss
-html,
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-```
-
-Add the following to **app.vue**:
-
-```html
-<style src="@/assets/css/main.scss" lang="scss"></style>
-```
-
-Add the following property to **nuxt.config.ts**:
-
-```tsx
-css: ["~/assets/css/main.scss"],
-```
-
-These last two steps are required to make sure the main.scss file is compiled and included in the application. This way you can write your general app css in the main.scss file. Alternatively, you can also write your css in the app.vue file or other component files. If you want to write css in a component file, you can use this style tag:
-
-```html
-<style scoped lang="scss"></style>
-```
-
-This will make sure the css is only applied to that component.
-
----
-
-<h2 id="vuetify">Vuetify</h2>
-
-<b>If you are planning to use Vuetify, It is recommended to follow the <a href="#scss">SCSS</a> step first. It is recommended NOT to use Tailwind in combination.</b>
-
-`pnpm add vuetify@next @mdi/font`
-
-Vuetify is a Material Design component framework for Vue.js. It is a very popular component library, and is used by many Nuxt 3 applications. It is recommended you use Vuetify if you are planning on using Material Design components. The @mdi/font package is required for the Material Design icons, these are used by default in Vuetify.
-
-You can learn more about Vuetify [here](https://vuetifyjs.com/en/getting-started/installation/).
-
-### /plugins/vuetify.ts
-
-```jsx
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-
-export default defineNuxtPlugin((nuxtApp) => {
-  const vuetify = createVuetify({
-    components,
-    directives,
-  })
-
-  nuxtApp.vueApp.use(vuetify)
-})
-```
-
-Change the following in **app.vue**:
-
-```html
-<template>
-  <VApp id="app">
-    <VMain>
-      <NuxtPage />
-    </VMain>
-  </VApp>
-</template>
-```
-
-Add the following to the **css array of nuxt.config.ts**:
-
-```tsx
-'vuetify/lib/styles/main.sass', '@mdi/font/css/materialdesignicons.min.css'
-```
-
-Add the following property to **nuxt.config.ts**:
-
-```tsx
-build: {
-    transpile: ["vuetify"],
-},
-```
-
----
-
-<h2 id="tailwind">Tailwind</h2>
-
-`pnpm add -D @nuxtjs/tailwindcss prettier-plugin-tailwindcss`
-
-Tailwind CSS is a utility-first CSS framework. It is a very popular CSS framework, allowing you to write inline css without opiniated best practies.
+Nuxt UI will automatically install the @nuxtjs/tailwindcss, @nuxtjs/color-mode and nuxt-icon modules for you. Tailwind CSS is a utility-first CSS framework. It is a very popular CSS framework, allowing you to write inline css without opiniated best practies. Nuxt Color Mode is a module that allows you to implement dark and light modes in your app. Nuxt Icon is a module that allows you to use a lot of icon libraries in your app. These modules are used to build the Nuxt UI components, and work together in synergy.
 
 You can learn more about Tailwind CSS [here](https://tailwindcss.com/docs).
 
 Add the following to the **modules array of nuxt.config.ts**:
 
 ```tsx
-'@nuxtjs/tailwindcss'
+'@nuxt/ui'
 ```
 
 Add the following property to **nuxt.config.ts**:
 
 ```tsx
 tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
-    configPath: 'tailwind.config.js',
-    exposeConfig: false,
-    injectPosition: 0,
+    exposeConfig: true,
     viewer: true,
 },
 ```
 
-Run the following command in terminal:
-`npx tailwindcss init`
+### app.config.ts
+
+```tsx
+export default defineAppConfig({
+  ui: {
+    primary: 'primaryColor',
+    notifications: {
+      position: 'top-0 bottom-auto',
+    },
+  },
+})
+```
+
+Nuxt UI uses a design system that is based on a primary color. In this config you can overwrite this color. The default is the green color included in tailwind css. This config overwrites this to primaryColor, which is later set up in tailwind.config.ts
+
+### tailwind.config.ts
+
+```tsx
+import colors from 'tailwindcss/colors'
+import type { Config } from 'tailwindcss'
+
+export default <Partial<Config>>{
+  theme: {
+    extend: {
+      colors: {
+        primaryColor: colors.blue,
+      },
+    },
+  },
+}
+```
+This file is used to configure tailwind css. It is a typescript file, and it is used to extend the default tailwind css configuration. The primaryColor is set to the blue color from the tailwind css color palette. This color is then used as the primary color in the Nuxt UI components as configured in the app.config.ts file.
 
 ### /assets/css/tailwind.css
 
@@ -554,19 +492,7 @@ Run the following command in terminal:
 @tailwind utilities;
 ```
 
-This file is required to make sure Tailwind CSS is included in the application.
-
-### tailwind.config.js
-
-```jsx
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}', './app.vue'],
-  theme: {},
-}
-```
-
-This configures Tailwind CSS to use the tailwind.css file, and to use the tailwind.config.js file. It also adds the prettier-plugin-tailwindcss plugin, which allows you to format your tailwind css with prettier and standardize your class order.
+This file is required to make sure Tailwind CSS is included in the application, and allows you to overwrite global styles using traditional CSS. You can use this for example to set a global font family.
 
 Add the following array to **.prettierrc.js**:
 
@@ -642,7 +568,7 @@ To protect the backend application, you want to add a basic middleware layer. Nu
 ```tsx
 export default defineNitroPlugin(async (nitroApp) => {
   try {
-    await console.log('Nitro server listening on ' + process.env.NUXT_PUBLIC_URL + (process.env.PORT ? ':' + process.env.PORT : ''))
+    await console.log('Nitro server listening on ' + process.env.NUXT_PUBLIC_URL)
     const testResponse = await $fetch('/api/test', { method: 'POST', headers: { 'x-api-key': process.env.NUXT_API_KEY || '' } })
     console.log('testResponse:', testResponse.statusCode, testResponse.statusMessage)
     return nitroApp
@@ -686,54 +612,5 @@ security: {
 ```
 
 You can learn more about Nuxt Security configuration [here](https://nuxt-security.vercel.app/documentation/getting-started/setup).
-
----
-
-<h2 id="prisma">Prisma</h2>
-
-`pnpm add -D prisma`
-
-`pnpm add @prisma/client`
-
-Prisma is an ORM, which is a layer that maps your database structure to the programming language you are using in your application. It allows you to bridge the gap between the backend part of your Nuxt 3 application and your database. It allows for easy to use database queries using Typescript, which allows you to achieve typesafety across your whole technology stack. It also prevents you from having to write SQL queries in a non SQL environment/language which is prone to errors.
-
-You can learn more about Prisma [here](https://www.prisma.io/docs).
-
-`npx prisma init`
-
-### /prisma/schema.prisma
-
-```tsx
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-```
-
-This command generates this schema.prisma file in the prisma folder. This file is used to configure your database connection and to generate your database models. Also, a DATABASE_URL variable is created in **.env**. You need to overwrite this variable with the correctly formatted database url, which looks a lot like a connection string. In the schema file, **you also need to change the provider to the correct database provider**.
-
-You can find the correct format and database providers [here](https://www.prisma.io/docs/reference/database-reference/connection-urls).
-
-### /prisma/client.ts
-
-```tsx
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
-export default prisma
-```
-
-Afterwards, to start importing and using your database model, you can run the following commands in terminal.
-
-`npx prisma db pull`
-
-`npx prisma generate`
 
 ---
