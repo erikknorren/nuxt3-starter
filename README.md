@@ -172,7 +172,7 @@ NUXT_PUBLIC_URL="http://localhost:3000"
 
 You can generate an API key [here](https://codepen.io/corenominal/pen/rxOmMJ).
 
-**IMPORTANT:** It is not possible to overwrite NODE_ENV even though it is in the .env file. This is because NODE_ENV is a reserved environment variable. The value is either "development" or "production" depending on the build environment. If you want to add more build environments, for example a test environment, you can replace the env variable in the runtimeConfig public object. For example as done here in: `env: process.env.NUXT_PUBLIC_ENV`
+**IMPORTANT:** It is not possible to overwrite NODE_ENV even though it is in the .env file. This is because NODE_ENV is a reserved environment variable. The value is either "development" or "production" depending on the build environment. If you want to add more build environments, for example a test environment, you can replace the env variable in the runtimeConfig public object. For example as done here in : `env: process.env.NUXT_PUBLIC_ENV`
 
 ---
 
@@ -448,7 +448,9 @@ tailwindcss: {
     viewer: true,
 },
 ```
+
 If you do not want to have to implement light and dark color mode, you can set the colorMode to light (or dark) in nuxt.config.ts as follows:
+
 ```tsx
 colorMode: {
     preference: 'light',
